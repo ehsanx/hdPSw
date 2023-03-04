@@ -1,0 +1,18 @@
+{
+  "hash": "a266588e63fc902c0c9298a814284c03",
+  "result": {
+    "markdown": "# Resources\n\nSee @sec-introduction for additional discussion.\n\n\n::: {.cell .column-margin}\n\n```{.r .cell-code}\nknitr::kable(\n  mtcars[1:3, 1:3]\n)\n```\n\n::: {.cell-output-display}\n|              |  mpg| cyl| disp|\n|:-------------|----:|---:|----:|\n|Mazda RX4     | 21.0|   6|  160|\n|Mazda RX4 Wag | 21.0|   6|  160|\n|Datsun 710    | 22.8|   4|  108|\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\r\n<script src=\"site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\r\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
