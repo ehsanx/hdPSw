@@ -1,0 +1,860 @@
+## Data from NHANES 2013-14
+
+
+```{r setup}
+library(nhanesA)
+library(car)
+library(plyr)
+library(dplyr)
+```
+
+### Download and Subsetting to retain only the useful variables
+
+#### Demographic
+```{r, cache=TRUE}
+demo <- nhanes('DEMO_H') ### Both males and females 0 YEARS - 150 YEARS
+demo1 <- demo[c("SEQN", ### Respondent sequence number
+                "RIDAGEYR", ### Age in years at screening
+                "RIAGENDR", ### gender
+                "DMDEDUC2", ### Education level - Adults 20+
+                "RIDRETH1", ### race/ethnicity
+                "DMDMARTL", ### marital status	
+                "INDHHIN2", ### Annual household income
+                "DMDBORN4", ### where born
+                "SDDSRVYR", ### survey cycle
+                "WTINT2YR", ###  Full sample 2 year weights
+                "SDMVPSU", ### Masked variance pseudo-PSU
+                "SDMVSTRA")] ### Masked variance pseudo-stratum
+demo_vars <- names(demo1) 
+demo2 <- nhanesTranslate('DEMO_H', demo_vars, data = demo1)
+```
+
+#### BMI
+```{r, cache=TRUE}
+bmx <- nhanes('BMX_H')
+bmx1 <- bmx[c("SEQN", ### Respondent sequence number
+              "BMXWT", ### Weight (kg) 
+              "BMXHT", ### Standing Height (cm)
+              "BMXBMI", ### Body Mass Index (kg/m**2): 2 YEARS - 150 YEARS
+              "BMXWAIST")] ### Waist Circumference (cm): 2 YEARS - 150 YEARS
+bmx_vars <- names(bmx1)
+bmx2 <- nhanesTranslate('BMX_H', bmx_vars, data = bmx1)
+```
+
+#### Diabetes
+```{r, cache=TRUE}
+diq <- nhanes('DIQ_H')
+diq1 <- diq[c("SEQN", ### Respondent sequence number
+              "DIQ010", ### Doctor told you have diabetes
+              "DID040", ### Age when first told you had diabetes
+              "DIQ050", ### Taking insulin now
+              "DIQ070", ### Take diabetic pills to lower blood sugar
+              "DID320", ### What was most recent LDL number
+              "DIQ175A")] ### Family history
+diq_vars <- names(diq1)
+diq2 <- nhanesTranslate('DIQ_H', diq_vars, data = diq1)
+```
+
+#### Smoking
+```{r, cache=TRUE}
+smq <- nhanes('SMQ_H')
+smq1 <- smq[c("SEQN", ### Respondent sequence number
+              "SMQ020", ### Smoked at least 100 cigarettes in life
+              "SMQ040")] ### Do you now smoke cigarettes?: 18 YEARS - 150 YEARS
+smq_vars <- names(smq1)
+smq2 <- nhanesTranslate('SMQ_H', smq_vars, data = smq1)
+```
+
+#### Diet
+```{r, cache=TRUE}
+dbq <- nhanes('DBQ_H')
+dbq1 <- dbq[c("SEQN", ### Respondent sequence number
+              "DBQ700")] ### How healthy is the diet: 16 YEARS - 150 YEARS
+dbq_vars <- names(dbq1)
+dbq2 <- nhanesTranslate('DBQ_H', dbq_vars, data = dbq1)
+
+### Diet - day 1 information
+dr1tot <- nhanes('DR1TOT_H')
+dr1tot1 <- dr1tot[c("SEQN", ### Respondent sequence number
+                    "DR1TKCAL", ### Energy (kcal)
+                    "DR1TALCO", ### Alcohol (gm): 0 YEARS - 150 YEARS
+                    "DR1TCARB", ### Carbohydrate (gm): 0 YEARS - 150 YEARS
+                    "DR1TSFAT", ### Total saturated fatty acids (gm)
+                    "DR1TFIBE", ### Dietary fiber (gm)
+                    "DR1TSODI", ### Sodium (mg)
+                    "DR1TPOTA", ### Potassium (mg)
+                    "DR1TPROT", ### Protein (gm)
+                    "DR1TCAFF")] ### Caffeine (mg)
+dr1tot_vars <- names(dr1tot1)
+dr1tot2 <- nhanesTranslate('DR1TOT_H', dr1tot_vars, data = dr1tot1)
+
+### Diet - day 2 information
+dr2tot <- nhanes('DR2TOT_H')
+dr2tot1 <- dr2tot[c("SEQN", ### Respondent sequence number
+                    "DR2TKCAL", ### Energy (kcal)
+                    "DR2TALCO", ### Alcohol (gm): 0 YEARS - 150 YEARS
+                    "DR2TCARB", ### Carbohydrate (gm): 0 YEARS - 150 YEARS
+                    "DR2TSFAT", ### Total saturated fatty acids (gm)
+                    "DR2TFIBE", ### Dietary fiber (gm)
+                    "DR2TSODI", ### Sodium (mg)
+                    "DR2TPOTA", ### Potassium (mg)
+                    "DR2TPROT", ### Protein (gm)
+                    "DR2TCAFF")] ### Caffeine (mg)
+dr2tot_vars <- names(dr2tot1)
+dr2tot2 <- nhanesTranslate('DR2TOT_H', dr2tot_vars, data = dr2tot1)
+```
+
+#### Physical activity
+```{r, cache=TRUE}
+paq <- nhanes('PAQ_H')
+paq1 <- paq[c("SEQN", ### Respondent sequence number
+              "PAQ605", ### Vigorous work activity: 18 YEARS150 YEARS
+              "PAQ610", ### Number of days vigorous work
+              "PAD615", ### Minutes vigorous-intensity work
+              "PAQ620", ### Moderate work activity
+              "PAQ625", ### Number of days moderate work
+              "PAD630", ### Minutes moderate-intensity work
+              "PAQ635", ### Walk or bicycle 
+              "PAQ640", ### Number of days walk or bicycle
+              "PAD645", ### Minutes walk/bicycle for transportation
+              "PAQ650", ### Vigorous recreational activities
+              "PAQ655", ### Days vigorous recreational activities
+              "PAD660", ### Minutes vigorous recreational activities
+              "PAQ665", ### Moderate recreational activities
+              "PAQ670", ### Days moderate recreational activities
+              "PAD675", ### Minutes moderate recreational activities
+              "PAD680")] ### Minutes sedentary activity
+paq_vars <- names(paq1)
+paq2 <- nhanesTranslate('PAQ_H', paq_vars, data = paq1)
+```
+
+#### Access to healthcare
+```{r, cache=TRUE}
+huq <- nhanes('HUQ_H')
+huq1 <- huq[c("SEQN", ### Respondent sequence number
+              "HUQ030")] ### Routine place to go for healthcare
+huq_vars <- names(huq1)
+huq2 <- nhanesTranslate('HUQ_H', huq_vars, data = huq1)
+```
+
+#### Blood pressure
+```{r, cache=TRUE}
+bpx <- nhanes('BPX_H')
+bpx1 <- bpx[c("SEQN", ### Respondent sequence number
+              "BPXSY1", ### Systolic Blood pres (1st rdg) mmHg: 8 - 150 YEARS
+              "BPXSY2", ### Systolic: Blood pres (2nd rdg) mm Hg
+              "BPXSY3", ### Systolic: Blood pres (3rd rdg) mm Hg
+              "BPXSY4", ### Systolic: Blood pres (4th rdg) mm Hg
+              "BPXDI1", ### Diastolic Blood pres (1st rdg) mmHg: 8 - 150 YEARS
+              "BPXDI2", ### Diastolic: Blood pres (2nd rdg) mm Hg
+              "BPXDI3", ### Diastolic: Blood pres (3rd rdg) mm Hg
+              "BPXDI4")] ### Diastolic: Blood pres (4th rdg) mm Hg
+bpx_vars <- names(bpx1)
+bpx2 <- nhanesTranslate('BPX_H', bpx_vars, data = bpx1)
+
+bpq <- nhanes('BPQ_H')
+bpq1 <- bpq[c("SEQN", ### Respondent sequence number
+              "BPQ050A", ### Now taking prescribed medicine for HBP: 16 YEARS - 150 YEARS
+              "BPQ100D", ### Now taking prescribed medicine for cholesterol: 16 YEARS - 150 YEARS
+              "BPQ080")] ### high cholesterol
+bpq_vars <- names(bpq1)
+bpq2 <- nhanesTranslate('BPQ_H', bpq_vars, data = bpq1)
+```
+
+#### Sleep
+```{r, cache=TRUE}
+slq <- nhanes('SLQ_H')
+slq1 <- slq[c("SEQN", ### Respondent sequence number
+              "SLD010H", ### Sleep hours 
+              "SLQ050")] ### Ever told doctor had trouble sleeping?
+slq_vars <- names(slq1)
+slq2 <- nhanesTranslate('SLQ_H', slq_vars, data = slq1)
+```
+
+#### CVD
+```{r, cache=TRUE}
+mcq <- nhanes('MCQ_H')
+mcq1 <- mcq[c("SEQN", ### Respondent sequence number
+              "MCQ160A", ### Doctor ever said you had arthritis: 20 YEARS - 150 YEARS
+              "MCQ180A", ### Age when told you had arthritis
+              "MCQ195", ### Which type of arthritis was it?
+              "MCQ160B", ### Ever told had congestive heart failure
+              "MCQ180B", ### Age when told you had heart failure
+              "MCQ160C", ### Ever told you had coronary heart disease
+              "MCQ180C", ### Age when told had coronary heart disease
+              "MCQ160D", ### Ever told you had angina/angina pectoris
+              "MCQ180D", ### Age when told you had angina pectoris
+              "MCQ160E", ### Ever told you had heart attack
+              "MCQ180E", ### Age when told you had heart attack
+              "MCQ160F", ### Ever told you had a stroke
+              "MCQ180F", ### Age when told you had a stroke
+              "MCQ300A", ### Close relative had heart attack?
+              "MCQ160O")] ### Ever told you had COPD?: 1 YEARS - 150 YEARS 
+mcq_vars <- names(mcq1)
+mcq2 <- nhanesTranslate('MCQ_H', mcq_vars, data = mcq1)
+```
+
+#### Laboratory data
+```{r, cache=TRUE}
+### Cholesterol - Total
+tchl <- nhanes('TCHOL_H') ### 6 YEARS - 150 YEARS
+tchl1 <- tchl[c("SEQN", ### Respondent sequence number
+                "LBXTC", ### Total Cholesterol (mg/dL)
+                "LBDTCSI")] ### Total Cholesterol (mmol/L)
+tchl_vars <- names(tchl1) 
+tchl2 <- nhanesTranslate('TCHOL_H', tchl_vars, data = tchl1)
+
+### Cholesterol - LDL & Triglycerides
+ldl <- nhanes('TRIGLY_H')
+ldl1 <- ldl[c("SEQN", ### Respondent sequence number
+              "LBDLDL", ### LDL-cholesterol (mg/dL)
+              "LBDLDLSI", ### LDL-cholesterol (mmol/L)
+              "LBXTR", ### Triglyceride (mg/dL)
+              "LBDTRSI")] ### Triglyceride (mmol/L)
+ldl_vars <- names(ldl1)
+ldl2 <- nhanesTranslate('TRIGLY_H', ldl_vars, data = ldl1)
+
+### Cholesterol - HDL 
+hdl <- nhanes('HDL_H')
+hdl1 <- hdl[c("SEQN", ### Respondent sequence number
+              "LBDHDD", ### Direct HDL-Cholesterol (mg/dL)
+              "LBDHDDSI")] ### Direct HDL-Cholesterol (mmol/L)
+hdl_vars <- names(hdl1)
+hdl2 <- nhanesTranslate('HDL_H', hdl_vars, data = hdl1)
+
+### Standard Biochemistry Profile
+biopro <- nhanes('BIOPRO_H') ### 12 YEARS - 150 YEARS
+biopro1 <- biopro[c("SEQN", ### Respondent sequence number
+                    "LBXSTR", ### Triglycerides, refrigerated (mg/dL)
+                    "LBXSUA", ### Uric acid (mg/dL)
+                    "LBXSTP", ### Total protein (g/dL)
+                    "LBXSTB", ### Total bilirubin (mg/dL)
+                    "LBXSPH", ### Phosphorus (mg/dL)
+                    "LBXSNASI", ### Sodium (mmol/L)
+                    "LBXSKSI", ### Potassium (mmol/L)
+                    "LBXSGB", ### Globulin (g/dL)
+                    "LBXSCA")] ### Total Calcium (mg/dL)
+biopro_vars <- names(biopro1) 
+biopro2 <- nhanesTranslate('BIOPRO_H', biopro_vars, data = biopro1)
+
+### Albumin & Creatinine - Urine
+alb <- nhanes('ALB_CR_H') ### 6 YEARS - 150 YEARS
+alb1 <- alb[c("SEQN", ### Respondent sequence number
+              "URXUMA", ### Albumin, urine (ug/mL)
+              "URXUMS", ### Albumin, urine (mg/L)
+              "URXUCR", ### Creatinine, urine (mg/dL) 
+              "URXCRS", ### Creatinine, urine (umol/L)
+              "URDACT")] ### Albumin creatinine ratio (mg/g)
+alb_vars <- names(alb1) 
+alb2 <- nhanesTranslate('ALB_CR_H', alb_vars, data = alb1)
+
+### Fasting glucose (mmol/L) 
+glu <- nhanes('GLU_H') ### 6 YEARS - 150 YEARS
+glu1 <- glu[c("SEQN", ### Respondent sequence number
+              "LBXGLU", ### Fasting Glucose (mg/dL)
+              "LBDGLUSI")] ### Fasting Glucose (mmol/L)
+glu_vars <- names(glu1) 
+glu2 <- nhanesTranslate('GLU_H', glu_vars, data = glu1)
+
+### Fasting insulin (µU/L)
+ins <- nhanes('INS_H') ### 6 YEARS - 150 YEARS
+ins1 <- ins[c("SEQN", ### Respondent sequence number
+              "LBXIN", ### Insulin (uU/mL)
+              "LBDINSI")] ### Insulin (pmol/L)
+ins_vars <- names(ins1) 
+ins2 <- nhanesTranslate('INS_H', ins_vars, data = ins1)
+
+### Glycohemoglobin 
+gbh <- nhanes('GHB_H') ### 6 YEARS - 150 YEARS
+gbh1 <- gbh[c("SEQN", ### Respondent sequence number
+              "LBXGH")] ### Glycohemoglobin (%)
+gbh_vars <- names(gbh1) 
+gbh2 <- nhanesTranslate('GHB_H', gbh_vars, data = gbh1)
+```
+
+#### ICD-10-CM codes
+```{r, cache=TRUE}
+rxq <- nhanes('RXQ_RX_H')
+rxq10 <- rxq[c("SEQN", ### Respondent sequence number
+               "RXDRSC1")] ### ICD-10-CM code 1
+rxq11 <- names(rxq10) 
+rxq12 <- nhanesTranslate('RXQ_RX_H', rxq11, data = rxq10)
+
+rxq20 <- rxq[c("SEQN", ### Respondent sequence number
+               "RXDRSC2")] ### ICD-10-CM code 2
+rxq21 <- names(rxq20) 
+rxq22 <- nhanesTranslate('RXQ_RX_H', rxq21, data = rxq20)
+
+rxq30 <- rxq[c("SEQN", ### Respondent sequence number
+               "RXDRSC3")] ### ICD-10-CM code 3
+rxq31 <- names(rxq30) 
+rxq32 <- nhanesTranslate('RXQ_RX_H', rxq31, data = rxq30)
+```
+
+### Merging all the datasets - except for ICD-10 codes
+```{r, cache=TRUE}
+dat <- join_all(list(demo2, bmx2, diq2, smq2, dbq2, dr1tot2, dr2tot2, paq2, huq2, bpx2, 
+                     bpq2, slq2, mcq2, tchl2, ldl2, hdl2, biopro2, alb2, glu2, ins2, gbh2),
+                by = "SEQN", type='full')
+dat2 <- dat
+```
+
+### Recoding
+
+#### ID
+```{r, cache=TRUE}
+dat2$id <- dat2$SEQN
+```
+
+#### Demographic
+
+##### Age
+```{r, cache=TRUE}
+dat2$age <- dat2$RIDAGEYR
+#summary(dat2$age)
+dat2$age.cat <- car::recode(dat2$age, " 0:19 = '<20'; 20:49 = '20-49'; 50:64 = '50-64'; 
+                            65:80 = '65+'; else = NA ")
+dat2$age.cat <- factor(dat2$age.cat, levels = c("<20", "20-49", "50-64", "65+"))
+table(dat2$age.cat, useNA = "always")
+```
+
+##### Sex
+```{r, cache=TRUE}
+dat2$sex <- dat2$RIAGENDR
+table(dat2$sex, useNA = "always")
+```
+
+##### Education
+```{r, cache=TRUE}
+dat2$education <- dat2$DMDEDUC2
+dat2$education <- as.factor(dat2$education)
+#table(dat2$education, useNA = "always")
+dat2$education <- car::recode(dat2$education, recodes = " c('College graduate or above') = 
+'College graduate or above'; c('Some college or AA degree', 'High school graduate/GED or equi') = 
+'High school'; c('Less than 9th grade', '9-11th grade (Includes 12th grad') = 
+'Less than high school'; else = NA ")
+dat2$education <- factor(dat2$education, 
+                         levels = c("Less than high school", "High school", 
+                                    "College graduate or above"))
+table(dat2$education, useNA = "always")
+```
+
+##### Race/ethnicity
+```{r, cache=TRUE}
+dat2$race <- dat2$RIDRETH1
+#table(dat2$race, useNA = "always")
+dat2$race <- car::recode(dat2$race, recodes = " 'Non-Hispanic White'='White';
+                    'Non-Hispanic Black'='Black'; c('Mexican American',
+                    'Other Hispanic')= 'Hispanic'; else='Others' ")
+dat2$race <- factor(dat2$race, levels = c("White", "Black", "Hispanic", "Others"))
+table(dat2$race, useNA = "always")
+```
+
+##### Marital status
+```{r, cache=TRUE}
+dat2$marital <- dat2$DMDMARTL
+#table(dat2$marital, useNA = "always")
+dat2$marital <- car::recode(dat2$marital, recodes = " 'Never married'='Never married';
+c('Married', 'Living with partner') = 'Married/with partner'; 
+                            c('Widowed', 'Divorced', 'Separated')='Other'; else=NA ")
+dat2$marital <- factor(dat2$marital, levels = c("Never married", "Married/with partner",
+                                                "Other"))
+table(dat2$marital, useNA = "always")
+```
+
+##### Income
+```{r, cache=TRUE}
+dat2$income <- dat2$INDHHIN2
+#table(dat2$income, useNA = "always")
+dat2$income  <- car::recode(dat2$income, recodes = " c('$ 0 to $ 4,999', '$ 5,000 to $ 9,999',
+'$10,000 to $14,999', '$15,000 to $19,999', 'Under $20,000')='less than $20,000';
+                       c('Over $20,000','$20,000 and Over', '$20,000 to $24,999', 
+                       '$25,000 to $34,999', '$35,000 to $44,999', '$45,000 to $54,999', 
+                       '$55,000 to $64,999', '$65,000 to $74,999')='$20,000 to $74,999';
+                       c('$75,000 to $99,999','$100,000 and Over')='$75,000 and Over'; 
+                            else=NA ")
+dat2$income  <- factor(dat2$income , levels=c("less than $20,000", "$20,000 to $74,999", 
+                                              "$75,000 and Over"))
+table(dat2$income, useNA = "always")
+```
+
+##### Where born / citizenship
+```{r, cache=TRUE}
+dat2$born <- dat2$DMDBORN4
+#table(dat2$born, useNA = "always") 
+dat2$born <- car::recode(dat2$born, recodes = " 'Others'='Other place';
+                       'Born in 50 US states or Washingt'= 'Born in US'; else=NA")
+dat2$born <- factor(dat2$born, levels = c("Born in US", "Other place"))
+table(dat2$born, useNA = "always") 
+```
+
+#### BMI 
+
+##### BMI
+```{r, cache=TRUE}
+dat2$bmi <- dat2$BMXBMI
+summary(dat2$bmi)
+```
+
+##### Obesity 
+```{r, cache=TRUE}
+dat2$obese <- ifelse(dat2$BMXBMI >= 30, "Yes", "No")
+dat2$obese <- factor(dat2$obese, levels = c("No", "Yes"))
+table(dat2$obese, useNA = "always")
+```
+
+##### Standing Height (cm)
+```{r, cache=TRUE}
+dat2$bodyheight <- dat2$BMXHT
+summary(dat2$bodyheight)
+```
+
+##### Weight (kg) 
+```{r, cache=TRUE}
+dat2$bodyweight <- dat2$BMXWT
+summary(dat2$bodyweight)
+```
+
+##### Waist Circumference (cm)
+```{r, cache=TRUE}
+dat2$waist <- dat2$BMXWAIST
+summary(dat2$waist)
+```
+
+#### Diabetes
+```{r, cache=TRUE}
+dat2$diabetes <- dat2$DIQ010
+dat2$diabetes <- car::recode(dat2$diabetes, " 'Yes'='Yes'; c('No','Borderline')='No';
+                             else=NA ")
+
+### Taking insulin now or diabetic pills to lower blood sugar - they have diabetes
+dat2$diabetes[dat2$DIQ050 == "Yes"] <- "Yes"
+dat2$diabetes[dat2$DIQ070 == "Yes"] <- "Yes"
+table(dat2$diabetes, useNA = "always")
+```
+
+#### Family history of diabetes
+```{r, cache=TRUE}
+dat2$diabetes.family.history <- car::recode(dat2$DIQ175A, " 'Family history' = 'Yes'; 
+                             else = 'No' ")
+dat2$diabetes.family.history <- factor(dat2$diabetes.family.history, levels = c("No", "Yes"))
+dat2$diabetes.family.history[dat2$DIQ175A=="Don't know"] <- NA
+table(dat2$diabetes.family.history, useNA = "always")
+```
+
+#### Smoking
+```{r, cache=TRUE}
+dat2$smoking <- dat2$SMQ020
+#table(dat2$smoking, useNA = "always")
+dat2$smoking <- car::recode(dat2$smoking, " 'Yes' = 'Current smoker'; 'No' = 'Never smoker'; else=NA  ")
+dat2$smoking <- factor(dat2$smoking, levels = c("Never smoker", "Previous smoker", "Current smoker"))
+#table(dat2$smoking, useNA = "always")
+
+#table(dat2$SMQ040, useNA = "always")
+#table(dat2$smoking, dat2$SMQ040, useNA = "always")
+
+dat2$smoking[dat2$SMQ040 == "Not at all"] <- "Previous smoker"
+table(dat2$smoking, useNA = "always")
+```
+
+#### Diet
+
+##### How healthy is the diet
+```{r, cache=TRUE}
+dat2$diet.healthy <- dat2$DBQ700
+#table(dat2$diet.healthy, useNA = "always")
+dat2$diet.healthy <- car::recode(dat2$diet.healthy, recodes = " c('Excellent', 'Very good')=
+                    'Very good or excellent'; 'Good'='Good'; c('Fair', 'Poor')=
+                    'Poor or fair'; else = NA ")
+dat2$diet.healthy <- factor(dat2$diet.healthy, levels = c("Poor or fair", "Good", 
+                                                          "Very good or excellent"))
+table(dat2$diet.healthy, useNA = "always")
+```
+
+##### Energy (kcal)
+```{r, cache=TRUE}
+dat2$diet.energy <- rowMeans(dat2[,c("DR1TKCAL", "DR2TKCAL")], na.rm = T)
+summary(dat2$diet.energy)
+```
+
+##### Alcohol (gm)
+```{r, cache=TRUE}
+dat2$diet.alcohol <- rowMeans(dat2[,c("DR1TALCO", "DR2TALCO")], na.rm = T)
+summary(dat2$diet.alcohol)
+```
+
+##### Carbohydrate (gm)
+```{r, cache=TRUE}
+dat2$diet.carbohydrate <- rowMeans(dat2[,c("DR1TCARB", "DR2TCARB")], na.rm = T)
+summary(dat2$diet.carbohydrate)
+```
+
+##### Total saturated fatty acids (gm)
+```{r, cache=TRUE}
+dat2$diet.fatty <- rowMeans(dat2[,c("DR1TSFAT", "DR2TSFAT")], na.rm = T)
+summary(dat2$diet.fatty)
+```
+
+##### Dietary fiber (gm)
+```{r, cache=TRUE}
+dat2$diet.fiber <- rowMeans(dat2[,c("DR1TFIBE", "DR2TFIBE")], na.rm = T)
+summary(dat2$diet.fiber)
+```
+
+##### Dietary sodium (mg)
+```{r, cache=TRUE}
+dat2$diet.sodium <- rowMeans(dat2[,c("DR1TSODI", "DR2TSODI")], na.rm = T)
+summary(dat2$diet.sodium)
+```
+##### Dietary potassium (mg)
+```{r, cache=TRUE}
+dat2$diet.potassium <- rowMeans(dat2[,c("DR1TPOTA", "DR2TPOTA")], na.rm = T)
+summary(dat2$diet.potassium)
+```
+
+##### Dietary protein (mg)
+```{r, cache=TRUE}
+dat2$diet.protein <- rowMeans(dat2[,c("DR1TPROT", "DR2TPROT")], na.rm = T)
+summary(dat2$diet.protein)
+```
+
+##### Dietary caffeine (mg)
+```{r, cache=TRUE}
+dat2$diet.caffeine <- rowMeans(dat2[,c("DR1TCAFF", "DR2TCAFF")], na.rm = T)
+summary(dat2$diet.caffeine)
+```
+
+#### Vigorous physical activity
+```{r, cache=TRUE}
+#table(dat2$PAQ605, useNA = "always")
+dat2$physical.activity <- dat2$PAQ605
+dat2$physical.activity <- car::recode(dat2$physical.activity, recodes = " 'No' = 'No'; 
+                                      'Yes' = 'Yes'; else=NA")
+dat2$physical.activity <- factor(dat2$physical.activity, levels = c("No", "Yes"))
+table(dat2$physical.activity, useNA = "always")
+```
+
+#### Access to medical services
+```{r, cache=TRUE}
+dat2$medical.access <- dat2$HUQ030
+#table(dat2$medical.access, useNA = "always")
+dat2$medical.access <- car::recode(dat2$medical.access, recodes = " c('Yes',
+                              'There is more than one place')='Yes'; 'There is no place'=
+                              'No'; else=NA")
+table(dat2$medical.access, useNA = "always")
+```
+
+#### Hypertension/high blood pressure
+
+##### Systolic BP
+```{r, cache=TRUE}
+dat2$systolic1 <- dat2$BPXSY1
+dat2$systolic2 <- dat2$BPXSY2
+dat2$systolic3 <- dat2$BPXSY3
+dat2$systolic4 <- dat2$BPXSY4
+
+dat2 <- dat2 %>% 
+  mutate(systolicBP = rowMeans(dat2[, c("systolic1", "systolic2", "systolic3", "systolic4")], 
+                             na.rm = TRUE))
+summary(dat2$systolicBP)
+```
+
+##### Diastolic BP
+```{r, cache=TRUE}
+dat2$diastolic1 <- dat2$BPXDI1
+dat2$diastolic1[dat2$diastolic1 == 0] <- NA
+
+dat2$diastolic2 <- dat2$BPXDI2
+dat2$diastolic2[dat2$diastolic2 == 0] <- NA
+
+dat2$diastolic3 <- dat2$BPXDI3
+dat2$diastolic3[dat2$diastolic3 == 0] <- NA
+
+dat2$diastolic4 <- dat2$BPXDI4
+dat2$diastolic4[dat2$diastolic4 == 0] <- NA
+
+dat2 <- dat2 %>% 
+  mutate(diastolicBP = rowMeans(dat2[, c("diastolic1", "diastolic2", "diastolic3", 
+                                       "diastolic4")], na.rm = TRUE))
+summary(dat2$diastolicBP)
+```
+
+##### Hypertension
+```{r, cache=TRUE}
+### Taking BP lowering medication
+dat2$bpmedication <- dat2$BPQ050A
+
+### Hypertension/HTN - systolic >= 140 or diastolic >= 90 or taking BP lowering medication
+dat2$htn <- ifelse(dat2$systolicBP >= 140 | dat2$diastolicBP >= 90, "Yes", "No")
+dat2$htn[dat2$bpmedication == "Yes"] <- "Yes"
+table(dat2$htn, useNA = "always")
+```
+
+#### Sleep (daily in hours)
+```{r, cache=TRUE}
+dat2$sleep <- dat2$SLD010H
+dat2$sleep[dat2$sleep == 99] <- NA
+summary(dat2$sleep)
+```
+
+#### CVD
+```{r, cache=TRUE}
+### Congestive heart failure
+dat2$congestive <- dat2$MCQ160B
+dat2$congestive <- car::recode(dat2$congestive, " 'Yes'='Yes'; 'No'='No'; else=NA ")
+#table(dat2$congestive, useNA = "always")
+
+### Coronary heart disease
+dat2$coronary <- dat2$MCQ160C
+dat2$coronary <- car::recode(dat2$coronary, " 'Yes'='Yes'; 'No'='No'; else=NA ")
+#table(dat2$coronary, useNA = "always")
+
+### Angina/angina pectoris
+dat2$angina <- dat2$MCQ160D
+dat2$angina <- car::recode(dat2$angina, " 'Yes'='Yes'; 'No'='No'; else=NA ")
+#table(dat2$angina, useNA = "always")
+
+### Heart attack/Myocardial infarction 
+dat2$myocardial <- dat2$MCQ160E
+dat2$myocardial <- car::recode(dat2$myocardial, " 'Yes'='Yes'; 'No'='No'; else=NA ")
+#table(dat2$myocardial, useNA = "always")
+
+### Stroke  
+dat2$stroke <- dat2$MCQ160F
+dat2$stroke <- car::recode(dat2$stroke, " 'Yes'='Yes'; 'No'='No'; else=NA ")
+#table(dat2$stroke, useNA = "always")
+
+### CVD
+dat2$cvd <- dat2$congestive
+dat2$cvd[dat2$coronary == "Yes"] <- "Yes"
+dat2$cvd[dat2$angina == "Yes"] <- "Yes"
+dat2$cvd[dat2$myocardial == "Yes"] <- "Yes"
+dat2$cvd[dat2$stroke == "Yes"] <- "Yes"
+table(dat2$cvd, useNA = "always")
+```
+
+#### Laboratory data
+##### Total Cholesterol (mg/dL)
+```{r, cache=TRUE}
+dat2$cholesterol.total <- dat2$LBXTC
+summary(dat2$cholesterol.total)
+```
+
+##### Cholesterol - LDL (mg/dL)
+```{r, cache=TRUE}
+dat2$cholesterol.ldl <- dat2$LBDLDL
+summary(dat2$cholesterol.ldl)
+```
+
+##### Cholesterol - HDL (mg/dL)
+```{r, cache=TRUE}
+dat2$cholesterol.hdl <- dat2$LBDHDD
+summary(dat2$cholesterol.hdl)
+```
+
+##### Triglycerides
+```{r, cache=TRUE}
+dat2$triglycerides <- dat2$LBXTR
+summary(dat2$triglycerides)
+```
+
+##### Triglycerides, refrigerated (mg/dL)
+```{r, cache=TRUE}
+dat2$triglycerides.refr <- dat2$LBXSTR
+summary(dat2$triglycerides.refr)
+```
+
+##### Uric acid (mg/dL)
+```{r, cache=TRUE}
+dat2$uric.acid <- dat2$LBXSUA
+summary(dat2$uric.acid)
+```
+
+##### Total protein (g/dL)
+```{r, cache=TRUE}
+dat2$protein.total <- dat2$LBXSTP
+summary(dat2$protein.total)
+```
+
+##### Total bilirubin (mg/dL)
+```{r, cache=TRUE}
+dat2$bilirubin.total <- dat2$LBXSTB
+summary(dat2$bilirubin.total)
+```
+
+##### Phosphorus (mg/dL)
+```{r, cache=TRUE}
+dat2$phosphorus <- dat2$LBXSPH
+summary(dat2$phosphorus)
+```
+
+##### Sodium (mmol/L)
+```{r, cache=TRUE}
+dat2$sodium <- dat2$LBXSNASI
+summary(dat2$sodium)
+```
+
+##### Potassium (mmol/L)
+```{r, cache=TRUE}
+dat2$potassium <- dat2$LBXSKSI
+summary(dat2$potassium)
+```
+
+##### Globulin (g/dL)
+```{r, cache=TRUE}
+dat2$globulin <- dat2$LBXSGB
+summary(dat2$globulin)
+```
+
+##### Total calcium (mg/dL)
+```{r, cache=TRUE}
+dat2$calcium.total <- dat2$LBXSCA
+summary(dat2$calcium.total)
+```
+
+##### Albumin creatinine ratio (mg/g)
+```{r, cache=TRUE}
+dat2$albumin.creatinine.ratio <- dat2$URDACT
+summary(dat2$albumin.creatinine.ratio)
+```
+
+##### Fasting Glucose (mg/dL)
+```{r, cache=TRUE}
+dat2$glucose <- dat2$LBXGLU
+summary(dat2$glucose)
+```
+
+##### Fasting insulin (uU/mL)
+```{r, cache=TRUE}
+dat2$insulin <- dat2$LBXIN
+summary(dat2$insulin)
+```
+
+##### HbA1c or Glycohemoglobin (%)
+```{r, cache=TRUE}
+dat2$HbA1c <- dat2$LBXGH
+summary(dat2$HbA1c)
+```
+
+##### High cholesterol
+```{r, cache=TRUE}
+dat2$high.cholesterol <- dat2$BPQ080
+#table(dat2$high.cholesterol, useNA = "always")
+dat2$high.cholesterol <- car::recode(dat2$high.cholesterol, recodes = " 'Yes'='Yes';
+                                     'No'='No'; else = NA")
+table(dat2$high.cholesterol, useNA = "always")
+```
+
+#### Survey features
+
+##### Weight
+```{r, cache=TRUE}
+dat2$survey.weight <- dat2$WTINT2YR
+#summary(dat2$survey.weight)
+```
+
+##### PSU 
+```{r, cache=TRUE}
+dat2$psu <- as.factor(dat2$SDMVPSU)
+#table(dat2$psu)
+```
+
+##### Strata
+```{r, cache=TRUE}
+dat2$strata <- as.factor(dat2$SDMVSTRA)
+#table(dat2$strata)
+```
+
+#### Survey year
+```{r, cache=TRUE}
+dat2$year <- "2013-14"
+table(dat2$year, useNA = "always") 
+```
+
+#### ICD-10-CM codes
+```{r, cache=TRUE}
+colnames(rxq12) <- c("id", "icd10")
+colnames(rxq22) <- c("id", "icd10")
+colnames(rxq32) <- c("id", "icd10")
+
+rx2013 <- rbind(rxq12, rxq22, rxq32)
+rx2013 <- rx2013[order(rx2013$id),]
+
+rx2013$icd10[rx2013$icd10 == "Unknown"] <- NA
+rx2013$icd10[rx2013$icd10 == "Refused"] <- NA
+rx2013$icd10[rx2013$icd10 == "Don't know"] <- NA
+rx2013$icd10[rx2013$icd10 == ""] <- NA
+rx2013$icd10.new <- substr(rx2013$icd10, start = 1, stop = 3)
+
+rx2013 <- na.omit(rx2013)
+```
+
+### Analytic data
+
+#### Full dataset
+```{r, cache=TRUE}
+nhanes13 <- dat2
+```
+
+#### Analytic datset - adults 20 years of more
+```{r, cache=TRUE}
+vars <- c(
+  ### ID
+  "id",
+  
+  ### Demographic
+  "age", "age.cat", "sex", "education", "race", "marital", "income", "born", 
+  
+  ### BMI and obesity
+  "bmi", "obese", "bodyheight", "bodyweight", "waist",
+  
+  ### Diabetes
+  "diabetes", "diabetes.family.history",
+  
+  ### Smoking
+  "smoking", 
+  
+  ### Diet
+  "diet.healthy", 
+  "diet.energy", "diet.alcohol", "diet.carbohydrate", "diet.fatty", "diet.fiber", 
+  "diet.sodium", "diet.potassium", "diet.protein", "diet.caffeine", 
+  
+  ### Physical activity
+  "physical.activity", 
+  
+  ### Access to routine healthcare
+  "medical.access",
+  
+  ### Blood pressure and Hypertension
+  "systolicBP", "diastolicBP", "htn", 
+  
+  ### Sleep 
+  "sleep",
+  
+  ### CVD
+  "cvd",
+  
+  ### Laboratory 
+  "cholesterol.total", "cholesterol.ldl", "cholesterol.hdl", "triglycerides", 
+  "triglycerides.refr", "uric.acid", "protein.total", "bilirubin.total", "phosphorus",
+  "sodium", "potassium", "globulin", "calcium.total", "albumin.creatinine.ratio", 
+  "glucose", "insulin", "HbA1c", "high.cholesterol",
+  
+  ### Survey features
+  "survey.weight", "psu", "strata", 
+  
+  ### Survey year
+  "year"
+)
+
+analytic13 <- nhanes13[, vars]
+
+### Adults 20 years of more
+analytic13 <- subset(analytic13, age >= 20)
+```
+
+
+#### Save dataset for later use
+```{r, cache=TRUE}
+save(nhanes13, analytic13, rx2013, file = "data/analytic13.RData")
+```

@@ -27,6 +27,9 @@ book:
       - obj.qmd
     - references.qmd
   appendices:
+    - part: NHANES.qmd
+      chapters:
+      - n13.qmd
     - tools.qmd
     - resources.qmd  
     
