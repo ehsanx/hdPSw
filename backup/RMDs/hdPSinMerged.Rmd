@@ -1,0 +1,269 @@
+---
+title: "Creating hdPS variables from NHANES"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+always_allow_html: yes
+output:
+  html_document:
+    fig_caption: yes
+    keep_md: yes
+    toc: yes
+    number_sections: true
+    toc_depth: 2
+    toc_float: 
+      collapsed: true
+      smooth_scroll: true
+    theme: lumen
+    highlight: textmate
+  pdf_document:
+    fig_caption: yes
+    latex_engine: xelatex
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+  word_document:
+    toc: yes
+  slidy_presentation:
+    toc: yes  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(car)
+#library(dplyr)
+library(readr)
+library(DataExplorer)
+library(tableone)
+library(Publish)
+library(jtools)
+require(mice)
+require(autoCovariateSelection)
+require(data.table)
+```
+
+# Determine data sources
+
+## Analytic data
+
+Even though the original algorithm was proposed for health care utilization or claims databases, in the current example, we will be relying on openly available NHANES data.
+
+```{r, cache=TRUE}
+load(file = "data/analytic3cycles.RData")
+ls()
+```
+
+## Proxy data
+
+The Prescription Medications component of NHANES provides personal interview data on use of prescription medications during a one-month period prior (past 30 days) to the participant’s interview date. 
+
+```{r, cache=TRUE}
+analytic <- data.imputed
+rm(data.complete, data.imputed, data.merged, data.merged.xy)
+proxy.var.long <- dat.proxy.long
+rm(dat.proxy.long)
+```
+
+## Merge analytic data and proxies
+
+1. Prepare the minimal analytic data only with the following 4 information:
+
+- identifying information (`idx`)
+- exposure (`obese`)
+- outcome (`diabetes`)
+- domain of the codes (`dx`)
+
+In this example we only have prescription domain (1 domain `dx`)
+
+```{r, cache=TRUE}
+idx <- analytic$id
+outcome <- as.numeric(analytic$diabetes == "Yes") 
+exposure <- as.numeric(analytic$obese == "Yes")
+domain <- "dx"
+analytic.dfx <- as.data.frame(cbind(idx, exposure, outcome, domain))
+head(analytic.dfx)
+dim(analytic.dfx)
+```
+
+2. In the proxy data (from prescription domain), make sure the IDs have same name (`idx`) as the minimal analytic data:
+
+```{r, cache=TRUE}
+proxy.var.long$idx <- proxy.var.long$id
+sort(table(proxy.var.long$icd10), decreasing = TRUE)[1:10]
+head(proxy.var.long)
+proxy.var.long$id <- NULL
+```
+
+3. Merge both datasets
+
+```{r, cache=TRUE}
+dfx <- merge(analytic.dfx, proxy.var.long, by = "idx")
+head(dfx)
+tail(dfx)
+dim(dfx)
+```
+
+# Identifying candidate empirical covariates
+
+1. Now, based on the merged dataset, we want to identify which patients were linked in both databases
+
+```{r, cache=TRUE}
+#select distinct elements that are unique for each patient - treatment and outcome
+basetable <- dfx %>% select(idx, exposure, outcome) %>% distinct()
+head(basetable)
+dim(basetable)
+patientIds <- basetable$idx
+```
+
+2. Using the above IDs, we want to identify the list of candidate empirical covariates. This list is constrained by 
+
+- their prevalence (only top `n` covariates with highest prevalence would be chosen). We choose `n = 200` as it was proposed in the original algorithm. In reality, this is not necessary to be so restrictive. 
+- More importantly, analysts absolutely need to get rid of the codes that have zero variance (e.g., everyone has the code, or nobody has it). This second part of the problem is more likely and addressed by the following restriction: At least `min_num_patients` number of patients need to have that code to be selected in the list.
+
+If there were more dimensions, separate list of candidate empirical covariates would be identified.
+
+One important point here is that we have chosen granularity to be 3 digits in the ICD-10 code (we have already truncated the codes at 3 digit level while preparing the data).
+
+```{r, cache=TRUE}
+step1 <- get_candidate_covariates(df = dfx,  
+                                  domainVarname = "domain",
+                                  eventCodeVarname = "icd10", 
+                                  patientIdVarname = "idx",
+                                  patientIdVector = patientIds,
+                                  n = 200, 
+                                  min_num_patients = 20)
+out1 <- step1$covars_data 
+head(out1)
+tail(out1)
+all.equal(patientIds, step1$patientIds) #should return  TRUE
+```
+
+# Assessing recurrence via 3 binary variables
+
+In this step, we generate 3 binary recurrence covariates for each of the candidate empirical covariates identified in the previous step:
+
+- occurred at least once
+- occurred sporadically (at least more than the median)
+- occurred frequently (at least more than the 75th percentile)
+
+```{r, cache=TRUE}
+step2 <- get_recurrence_covariates(df = out1, 
+                                   patientIdVarname = "idx",
+                                   eventCodeVarname = "icd10", 
+                                   patientIdVector = patientIds)
+out2 <- step2$recurrence_data
+head(out2[,1:3])
+names(step2$recurrence_data)[-1]
+length(step2$recurrence_data)
+dim(out2)
+```
+
+
+# Prioritising covariates
+
+## Bross formula
+
+1. Three components are used in the calculation of bias contributed by not adjusting for a covariate:
+
+- prevalence of a binary recurrence variable among exposed ($P_{RE}$) 
+- prevalence of that binary recurrence variable among unexposed ($P_{RU}$)
+- association between that binary recurrence variable and the outcome ($RR_{RO}$)
+
+These are the ingredients of the Bross formula. This formula is helpful for understanding the impact of unmeasured confounding of a binary variable. We have to put assumed prevalence and risk ratio associated with an unmeasured confounder.
+
+2. These components help us calculate $log-absolute-bias$ amount:
+
+$Bias = \frac{P_{RE} (RR_{RO} - 1) + 1}{P_{RU} (RR_{RO} - 1) + 1}$
+
+For empirical covariates, we do not need to assume, we can basically calculate these numbers ($log-absolute-bias$) for all of the empirical covariates. For each data dimension, we rank each of the empirical covariates based on the amount of bias (confounding or imbalance) it could likely adjust. 
+
+3. Based on this $log-absolute-bias$, we select top `k` empirical covariates to be used in the hdPS analyses later.
+
+```{r, cache=TRUE}
+out3 <- get_prioritised_covariates(df = out2,
+                                   patientIdVarname = "idx", 
+                                   exposureVector = basetable$exposure,
+                                   outcomeVector = basetable$outcome,
+                                   patientIdVector = patientIds, 
+                                   k = 100)
+names(out3)
+names(out3$autoselected_covariate_df)[-1]
+out3$autoselected_covariate_df$rec_dx_NA_once <- NULL
+out3$autoselected_covariate_df$rec_dx_NA_sporadic <- NULL
+out3$autoselected_covariate_df$rec_dx_NA_frequent <- NULL
+dim(out3$autoselected_covariate_df)
+head(out3$autoselected_covariate_df[,1:3])
+```
+
+## Investigate log-absolute-bias
+
+```{r, cache=TRUE}
+length(out3$multiplicative_bias)
+summary(out3$multiplicative_bias)*100
+length(out3$multiplicative_bias[out3$multiplicative_bias > 0.0001])
+length(out3$multiplicative_bias[out3$multiplicative_bias > 0.001])
+length(out3$multiplicative_bias[out3$multiplicative_bias > 0.01])
+length(out3$multiplicative_bias[out3$multiplicative_bias > 0.1])
+hist(out3$multiplicative_bias)
+```
+
+
+# Save all data
+
+## Analytic data
+
+```{r, cache=TRUE}
+analytic$idx <- analytic$id
+analytic$id <- NULL
+dim(analytic)
+# profile_missing(analytic)
+analyticvar.names0 <- names(analytic)
+analyticvar.names <- setdiff(analyticvar.names0, c("age", 
+                                                  "diabetes", 
+                                                  "pregnancy",
+                                                  "obese", 
+                                                  "survey.weight", 
+                                                  "survey.weight.mec", 
+                                                  "psu", 
+                                                  "strata", 
+                                                  "year", 
+                                                  "idx"))
+```
+
+```{r, cache=TRUE}
+save(analytic, analyticvar.names, file = "data/analyticData.RData") 
+```
+
+## Data with empirical covariates
+
+```{r, cache=TRUE}
+emp.cov.dim <- step2$recurrence_data
+emp.codes <- names(step2$recurrence_data)[-1]
+emp.cov.data <- merge(analytic, emp.cov.dim, by = "idx", all.x = TRUE)
+# profile_missing(emp.cov.data)
+emp.cov.data[is.na(emp.cov.data)] <- 0
+# profile_missing(emp.cov.data)
+dim(emp.cov.data)
+emp.cov.names <- names(step2$recurrence_data)[-1]
+sort(apply(emp.cov.data[,emp.cov.names], 2, sum))[1:10]
+```
+
+```{r, cache=TRUE}
+save(emp.cov.names, emp.cov.data, file = "data/EmpCovData.RData") 
+```
+
+## Data with hdPS covariates
+
+```{r, cache=TRUE}
+hdps.dim <- out3$autoselected_covariate_df
+hdps.data <- merge(analytic, hdps.dim, by = "idx", all.x = TRUE)
+# profile_missing(hdps.data)
+hdps.data[is.na(hdps.data)] <- 0
+# profile_missing(hdps.data)
+dim(hdps.data)
+hdps.names <- names(out3$autoselected_covariate_df)[-1]
+sort(apply(hdps.data[,hdps.names], 2, sum))[1:10]
+```
+
+```{r, cache=TRUE}
+save(hdps.names, hdps.data, file = "data/hdPSData.RData") 
+```
+

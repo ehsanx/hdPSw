@@ -25,5 +25,35 @@
   },
   "NHANES.qmd": {
     "NHANES.html": "552900d8"
+  },
+  "index13.qmd": {
+    "index13.html": "6295c67a"
+  },
+  "index15.qmd": {
+    "index15.html": "e659e35d"
+  },
+  "index17.qmd": {
+    "index17.html": "1b123fbf"
+  },
+  "analytic13.qmd": {
+    "analytic13.html": "3afb484d"
+  },
+  "analytic15.qmd": {
+    "analytic15.html": "1122571d"
+  },
+  "analytic17.qmd": {
+    "analytic17.html": "eac4b050"
+  },
+  "merge13to17.qmd": {
+    "merge13to17.html": "b232245b"
+  },
+  "hdPSinMerged.qmd": {
+    "hdPSinMerged.html": "bba37536"
+  },
+  "labModified.qmd": {
+    "labModified.html": "8ecb2750"
+  },
+  "plasmode.qmd": {
+    "plasmode.html": "1cc41826"
   }
 }
