@@ -2,138 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ehsank.com/index.html</loc>
-    <lastmod>2023-05-03T23:57:21.959Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.522Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/motivating.html</loc>
-    <lastmod>2023-05-03T23:57:21.960Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.523Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/data.html</loc>
-    <lastmod>2023-05-03T23:57:21.962Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.524Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/proxy.html</loc>
-    <lastmod>2023-05-03T23:57:21.963Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.526Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/hdps.html</loc>
-    <lastmod>2023-05-03T23:57:21.964Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.527Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/step0.html</loc>
-    <lastmod>2023-05-03T23:57:21.966Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.529Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/step1.html</loc>
-    <lastmod>2023-05-03T23:57:21.968Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.530Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/step2.html</loc>
-    <lastmod>2023-05-03T23:57:21.969Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.532Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/step3.html</loc>
-    <lastmod>2023-05-03T23:57:21.972Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.533Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/step4.html</loc>
-    <lastmod>2023-05-03T23:57:21.973Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.535Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/step5.html</loc>
-    <lastmod>2023-05-03T23:57:21.977Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/step6.html</loc>
-    <lastmod>2023-05-03T23:57:21.979Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/step7.html</loc>
-    <lastmod>2023-05-03T23:57:21.981Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/ps.html</loc>
-    <lastmod>2023-05-03T23:57:21.983Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/sens.html</loc>
-    <lastmod>2023-05-03T23:57:21.984Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.536Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/extension.html</loc>
-    <lastmod>2023-05-03T23:57:21.986Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.537Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/pubmed.html</loc>
-    <lastmod>2023-05-03T23:57:21.988Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.538Z</lastmod>
   </url>
   <url>
-    <loc>https://ehsank.com/mllogic.html</loc>
-    <lastmod>2023-05-03T23:57:21.989Z</lastmod>
+    <loc>https://ehsank.com/dr.html</loc>
+    <lastmod>2023-05-04T20:10:54.539Z</lastmod>
   </url>
   <url>
-    <loc>https://ehsank.com/mllasso.html</loc>
-    <lastmod>2023-05-03T23:57:21.991Z</lastmod>
+    <loc>https://ehsank.com/plasmode.html</loc>
+    <lastmod>2023-05-04T20:10:54.540Z</lastmod>
   </url>
   <url>
-    <loc>https://ehsank.com/mlhybrid.html</loc>
-    <lastmod>2023-05-03T23:57:21.994Z</lastmod>
+    <loc>https://ehsank.com/compare.html</loc>
+    <lastmod>2023-05-04T20:10:54.542Z</lastmod>
   </url>
   <url>
-    <loc>https://ehsank.com/sl.html</loc>
-    <lastmod>2023-05-03T23:57:21.996Z</lastmod>
+    <loc>https://ehsank.com/results.html</loc>
+    <lastmod>2023-05-04T20:10:54.543Z</lastmod>
   </url>
   <url>
-    <loc>https://ehsank.com/tmle.html</loc>
-    <lastmod>2023-05-03T23:57:21.998Z</lastmod>
+    <loc>https://ehsank.com/results2.html</loc>
+    <lastmod>2023-05-04T20:10:54.544Z</lastmod>
   </url>
   <url>
-    <loc>https://ehsank.com/mlcompare.html</loc>
-    <lastmod>2023-05-03T23:57:22.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/guideline.html</loc>
-    <lastmod>2023-05-03T23:57:22.001Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/report.html</loc>
-    <lastmod>2023-05-03T23:57:22.003Z</lastmod>
+    <loc>https://ehsank.com/takehome.html</loc>
+    <lastmod>2023-05-04T20:10:54.545Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/references.html</loc>
-    <lastmod>2023-05-03T23:57:22.004Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/NHANES.html</loc>
-    <lastmod>2023-05-03T23:57:22.005Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/index13.html</loc>
-    <lastmod>2023-05-03T23:57:22.008Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/index15.html</loc>
-    <lastmod>2023-05-03T23:57:22.012Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/index17.html</loc>
-    <lastmod>2023-05-03T23:57:22.015Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/analytic13.html</loc>
-    <lastmod>2023-05-03T23:57:22.021Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/analytic15.html</loc>
-    <lastmod>2023-05-03T23:57:22.028Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/analytic17.html</loc>
-    <lastmod>2023-05-03T23:57:22.037Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ehsank.com/merge13to17.html</loc>
-    <lastmod>2023-05-03T23:57:22.039Z</lastmod>
+    <lastmod>2023-05-04T20:10:54.546Z</lastmod>
   </url>
 </urlset>

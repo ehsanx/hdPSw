@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - 1&nbsp; Data to Analyze</title>
+<title>Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - 14&nbsp; Take-aways</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 
@@ -49,8 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./proxy.html" rel="next">
-<link href="./motivating.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./results2.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -80,26 +61,20 @@ div.csl-indent {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-
-<meta name="twitter:title" content="Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - 1&nbsp; Data to Analyze">
-<meta name="twitter:description" content="To answer the research question “Does obesity increase the risk of developing diabetes?” in the U.S. context, we do the following:">
+<meta name="twitter:title" content="Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - 14&nbsp; Take-aways">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked slimcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Take-aways</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -170,7 +145,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></a>
+  <a href="./data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -265,7 +240,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./takehome.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Take-aways</span></a>
+  <a href="./takehome.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Take-aways</span></a>
   </div>
 </li>
       </ul>
@@ -284,19 +259,18 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#choose-a-u.s.-data-source" id="toc-choose-a-u.s.-data-source" class="nav-link active" data-scroll-target="#choose-a-u.s.-data-source"><span class="toc-section-number">1.1</span>  Choose a U.S. data source</a></li>
-  <li><a href="#confounder-identification" id="toc-confounder-identification" class="nav-link" data-scroll-target="#confounder-identification"><span class="toc-section-number">1.2</span>  Confounder identification</a></li>
-  <li><a href="#identify-measured-and-unmeasured-variables-in-the-data" id="toc-identify-measured-and-unmeasured-variables-in-the-data" class="nav-link" data-scroll-target="#identify-measured-and-unmeasured-variables-in-the-data"><span class="toc-section-number">1.3</span>  Identify measured and unmeasured variables in the data</a></li>
-  <li><a href="#analytic-data" id="toc-analytic-data" class="nav-link" data-scroll-target="#analytic-data"><span class="toc-section-number">1.4</span>  Analytic data</a></li>
+  <li><a href="#what-are-the-strengths" id="toc-what-are-the-strengths" class="nav-link active" data-scroll-target="#what-are-the-strengths"><span class="toc-section-number">14.1</span>  What are the strengths</a></li>
+  <li><a href="#what-could-improve" id="toc-what-could-improve" class="nav-link" data-scroll-target="#what-could-improve"><span class="toc-section-number">14.2</span>  What could improve</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="toc-section-number">14.3</span>  Conclusions</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/psw/edit/main/data.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/psw/edit/main/takehome.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Take-aways</span></h1>
 </div>
 
 
@@ -311,214 +285,65 @@ div.csl-indent {
 
 </header>
 
-<p>To answer the research question “Does obesity increase the risk of developing diabetes?” in the <mark>U.S. context</mark>, we do the following:</p>
-<section id="choose-a-u.s.-data-source" class="level2 page-columns page-full" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="choose-a-u.s.-data-source"><span class="header-section-number">1.1</span> Choose a U.S. data source</h2>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="images/nhanes.png" style="width:100.0%"></p>
-</div>
-</div>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<ul>
-<li><strong>Data source</strong>: National Health and Nutrition Examination Survey (<a href="https://wwwn.cdc.gov/nchs/nhanes/">NHANES</a>) <span class="citation" data-cites="nhanes">(<a href="references.html#ref-nhanes" role="doc-biblioref">Disease Control and Prevention 2021</a>)</span>
-<ul>
-<li><a href="https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2013">2013-2014</a>,</li>
-<li><a href="https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2015">2015-2016</a>,</li>
-<li><a href="https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2017">2017-2018</a></li>
-</ul></li>
-<li><strong>Availability</strong>: NHANES is a <mark>publicly available</mark> dataset that can be downloaded for free from the CDC website.</li>
-<li><strong>Design</strong>: Observational cross-sectional data.</li>
-</ul>
-</div></div></section>
-<section id="confounder-identification" class="level2 page-columns page-full" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="confounder-identification"><span class="header-section-number">1.2</span> Confounder identification</h2>
-<p><strong>Directed acyclic graph (DAG)</strong></p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><span class="citation" data-cites="greenland1999causal">(<a href="references.html#ref-greenland1999causal" role="doc-biblioref">Greenland, Pearl, and Robins 1999</a>)</span></p>
-</div></div><div style="text-align:center">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart TB
-  A[Obesity A] --&gt; Y(Diabetes Y)
-  L[Confounders C] --&gt; Y
-  L --&gt; A
-</pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/DAGbdcomplete0.png" style="width:100.0%" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Hypothesized Directed acyclic graph drawn based on analyst’s best understanding of the literature</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><strong>Exposure</strong>: Being obese</p>
-</div><div class="">
-<p><strong>Outcome</strong>: Developing diabetes</p>
-</div><div class="">
-<p><strong>Confounders</strong>: Demographic and lab variables</p>
-</div></div>
-
-</section>
-<section id="identify-measured-and-unmeasured-variables-in-the-data" class="level2 page-columns page-full" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="identify-measured-and-unmeasured-variables-in-the-data"><span class="header-section-number">1.3</span> Identify measured and unmeasured variables in the data</h2>
-<p>Find variables capturing the following concepts in the data based on a hypothesized DAG.</p>
-
-<style>
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-
-  tr:nth-child(odd) {
-    background-color: #f2f2f2;
-  }
-
-  tr:nth-child(even) td:nth-child(1),
-  tr:nth-child(even) td:nth-child(2) {
-    background-color: #f2f2f2;
-  }
-  
-  th {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  }
-</style>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Role</th>
-<th>Data Component</th>
-<th>Variables considered based on DAG</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Outcome</td>
-<td><a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/DIQ_J.htm">DIQ</a></td>
-<td><em>Have diabetes</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
-</tr>
-<tr class="even">
-<td>Exposure</td>
-<td><a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/BMX_J.htm">BMX</a></td>
-<td><em>Obese</em>; <a href="https://www.cdc.gov/obesity/basics/adult-defining.html">BMI &gt;= 30</a></td>
-</tr>
-<tr class="odd">
-<td>Confounder</td>
-<td>(<em>demographic</em>) <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/DEMO_J.htm">DEMO</a></td>
-<td>Age, Sex, Education, Race/ethnicity, Marital status, Annual household income, County of birth, Survey cycle year</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>(<em>behaviour</em>) <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SMQ_J.htm">SMQ</a>, <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/PAQ_J.htm">PAQ</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SLQ_J.htm">SLQ</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DBQ_J.htm">DBQ</a></td>
-<td>Smoking<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, Vigorous work activity, Sleep<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, Diet<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>(<em>health history / access</em>) <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/DIQ_J.htm">DIQ</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/HUQ_J.htm">HUQ</a></td>
-<td>Diabetes family history, Access to care<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>(<em>lab</em>) <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/BPX_J.htm">BPX</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/BPQ_J.htm">BPQ</a>, <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/BIOPRO_J.htm">BIOPRO</a></td>
-<td>Blood pressure (systolic, diastolic<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>), Cholesterol, Uric acid, Total Protein, Total Bilirubin, Phosphorus, Sodium, Potassium, Globulin, Total Calcium</td>
-</tr>
-</tbody>
-</table>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<ul>
-<li>14 demographic, behavioral, health history related variables
-<ul>
-<li>Mostly <strong>categorical</strong></li>
-</ul></li>
-<li>11 lab variables
-<ul>
-<li>Mostly <strong>continuous</strong></li>
-</ul></li>
-</ul>
-</div></div></section>
-<section id="analytic-data" class="level2 page-columns page-full" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="analytic-data"><span class="header-section-number">1.4</span> Analytic data</h2>
-<p><mark>3 cycles of NHANES datasets were merged:</mark></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart LR
-  A[NHANES] --&gt; C1(2013-2014 cycle) --&gt; ss1(10,175 \nparticipants)
-  A --&gt; C2(2015-2016 cycle) --&gt; ss2(9,971 \nparticipants)
-  A --&gt; C3(2017-2018 cycle) --&gt; ss3(9,254 \nparticipants)
-  ss1 --&gt; ss(7,585 \nafter \nimposing \neligibility \ncriteria)
-  ss2 --&gt; ss
-  ss3 --&gt; ss
-  style A fill:#FFA500;
-  style C1 fill:#FFA500;
-  style C2 fill:#FFA500;
-  style C3 fill:#FFA500;
-  style ss1 fill:#FFA500;
-  style ss2 fill:#FFA500;
-  style ss3 fill:#FFA500;
-  style ss fill:#FFA500;
-</pre>
-<div id="mermaid-tooltip-2" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-
-
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>Our study population was restricted to the U.S. population who were</p>
-<ul>
-<li>20 years or older and</li>
-<li>not pregnant at the time of survey data collection, and</li>
-<li>who had available International Classification of Diseases (ICD) codes to ensure we can extract sufficient proxy information for the analysis (discussed next page).</li>
-</ul>
-</div></div><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-nhanes" class="csl-entry" role="doc-biblioentry">
-Disease Control, Centers for, and Prevention. 2021. <span>“National Health and Nutrition Examination Survey (NHANES).”</span> <em>National Center for Health Statistics</em>.
-</div>
-<div id="ref-greenland1999causal" class="csl-entry" role="doc-biblioentry">
-Greenland, Sander, Judea Pearl, and James M Robins. 1999. <span>“Causal Diagrams for Epidemiologic Research.”</span> <em>Epidemiology</em>, 37–48.
-</div>
-</div>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>combination of (a) Doctor told you have diabetes, (b) Taking insulin now, (c) Take diabetic pills to lower blood sugar.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>cigarette use (at least 100 cigarettes in life)<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Sleep hours/workdays<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>How healthy is the diet<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Routine place to go for healthcare<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>average of 4 measurements<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<section id="what-are-the-strengths" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="what-are-the-strengths"><span class="header-section-number">14.1</span> What are the strengths</h2>
+<ol type="1">
+<li><p>Comprehensive comparison of various algorithms, going beyond the current literature.</p></li>
+<li><p>Plasmode simulation includes realistic considerations:</p></li>
 </ol>
+<ul>
+<li>Complex function</li>
+<li>Many noise variables available</li>
+<li>Based on an open dataset</li>
+</ul>
+<ol start="3" type="1">
+<li>Comprehensive list of performance measures considered:</li>
+</ol>
+<ul>
+<li>Coverage</li>
+<li>relative error in model SE</li>
+</ul>
+</section>
+<section id="what-could-improve" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="what-could-improve"><span class="header-section-number">14.2</span> What could improve</h2>
+<ol type="1">
+<li>More proxies!</li>
+</ol>
+<ul>
+<li>Others have used <span class="math inline">\(k = 10\)</span> in the same context to compare</li>
+</ul>
+<ol start="2" type="1">
+<li>Investigate additional double cross-fit versions:</li>
+</ol>
+<ul>
+<li>Only kitchen sink used</li>
+</ul>
+</section>
+<section id="conclusions" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">14.3</span> Conclusions</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+High-dimensional <mark>proxy adjustment</mark> context
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Employ TMLE whenever possible for more unbiased and accurate results.</li>
+</ol>
+<ul>
+<li>TMLE methods have competitive advantage while adjusting for too many proxies (<strong>high-dimensional</strong>; beyond low dimensions where it is now popular).</li>
+</ul>
+<ol start="2" type="1">
+<li>Exercise caution with Super Learner, considering the trade-offs between smooth and non-smooth learners.</li>
+</ol>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -657,13 +482,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./motivating.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Motivating example</span>
+      <a href="./results2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Refined Results</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./proxy.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reducing residual confounding</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

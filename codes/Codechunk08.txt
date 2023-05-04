@@ -1,0 +1,102 @@
+require(autoCovariateSelection)
+require(dplyr)
+require(cobalt)
+library(ggplot2)
+require(WeightIt)
+library(lmtest)
+load("data/analytic3cycles.RData")
+analytic <- data.complete
+idx <- analytic$id
+outcome <- as.numeric(analytic$diabetes == "Yes") 
+exposure <- as.numeric(analytic$obese == "Yes")
+domain <- "dx"
+analytic.dfx <- as.data.frame(cbind(idx, exposure, outcome, domain))
+dat.proxy.long <- subset(dat.proxy.long, 
+                         icd10 != "E66") # Overweight and obesity
+dat.proxy.long <- subset(dat.proxy.long, 
+                         icd10 != "O24") # Gestational diabetes mellitus
+dat.proxy.long <- subset(dat.proxy.long, 
+                         icd10 != "E10") # Type 1 diabetes mellitus
+dat.proxy.long <- subset(dat.proxy.long, 
+                         icd10 != "E11") # Type 2 diabetes mellitus
+proxy.var.long <- dat.proxy.long
+proxy.var.long$idx <- proxy.var.long$id
+proxy.var.long$id <- NULL
+dfx <- merge(analytic.dfx, proxy.var.long, by = "idx")
+head(dfx)
+basetable <- dfx %>% select(idx, exposure, outcome) %>% distinct()
+patientIds <- basetable$idx
+length(patientIds)
+save(dfx, patientIds, basetable, file = "data/dfx.RData")
+load(file = "data/dfx.RData")
+require(autoCovariateSelection)
+step1 <- get_candidate_covariates(df = dfx,  
+                                  domainVarname = "domain",
+                                  eventCodeVarname = "icd10", 
+                                  patientIdVarname = "idx",
+                                  patientIdVector = patientIds,
+                                  n = 200, 
+                                  min_num_patients = 20)
+out1 <- step1$covars_data
+step2 <- get_recurrence_covariates(df = out1, 
+                                   patientIdVarname = "idx",
+                                   eventCodeVarname = "icd10", 
+                                   patientIdVector = patientIds)
+out2 <- step2$recurrence_data
+out3 <- get_prioritised_covariates(df = out2,
+                                     patientIdVarname = "idx", 
+                                     exposureVector = basetable$exposure,
+                                     outcomeVector = basetable$outcome,
+                                     patientIdVector = patientIds, 
+                                     k = 100)
+hdps.dim <- out3$autoselected_covariate_df
+exposure <- "obese"
+outcome <- "diabetes" 
+investigator.specified.covariates <- 
+    c(# Demographic
+      "age.cat", "sex", "education", "race", 
+      "marital", "income", "born", "year",
+      
+      # health history related variables/access
+      "diabetes.family.history", "medical.access",
+      
+      # behavioral
+      "smoking", "diet.healthy", "physical.activity", "sleep",
+      
+      # Laboratory 
+      "uric.acid", "protein.total", "bilirubin.total", "phosphorus",
+      "sodium", "potassium", "globulin", "calcium.total", 
+      "systolicBP", "diastolicBP", "high.cholesterol"
+    )
+load("data/analytic3cycles.RData")
+hdps.dim$id <- hdps.dim$idx
+hdps.dim$idx <- NULL
+hdps.data <- merge(data.complete[,c("id",
+                                      outcome, 
+                                      exposure, 
+                                      investigator.specified.covariates)], 
+                     hdps.dim, by = "id")
+hdps.data$exposure <- as.numeric(I(hdps.data$obese=='Yes'))
+hdps.data$outcome <- as.numeric(I(hdps.data$diabetes=='Yes'))
+proxy.list.sel <- names(out3$autoselected_covariate_df[,-1])
+proxyform <- paste0(proxy.list.sel, collapse = "+")
+covform <- paste0(investigator.specified.covariates, collapse = "+")
+rhsformula <- paste0(c(covform, proxyform), collapse = "+")
+ps.formula <- as.formula(paste0("exposure", "~", rhsformula))
+require(WeightIt)
+W.out <- weightit(ps.formula, 
+                    data = hdps.data, 
+                    estimand = "ATE",
+                    method = "ps")
+out.formula <- as.formula(paste0("outcome", "~", "exposure"))
+fit <- glm(out.formula,
+             data = hdps.data,
+             weights = W.out$weights,
+             family= binomial(link = "logit"))
+fit.summary <- summary(fit)$coef["exposure",
+                                   c("Estimate", 
+                                     "Std. Error", 
+                                     "Pr(>|z|)")]
+fit.ci <- confint(fit, level = 0.95)["exposure", ]
+fit.summary_with_ci <- c(fit.summary, fit.ci)
+fit.summary_with_ci 

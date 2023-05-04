@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ehsan Karim, School of Population and Public Health, UBC">
-<meta name="dcterms.date" content="2023-05-03">
+<meta name="dcterms.date" content="2023-05-04">
 
-<title>hdPS and its machine learning extensions in residual confounding control</title>
+<title>Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,25 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
-}
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
 }
 </style>
 
@@ -83,21 +64,21 @@ div.csl-indent {
 }</script>
 
 
-<meta name="twitter:title" content="hdPS and its machine learning extensions in residual confounding control">
-<meta name="twitter:description" content="The use of retrospective health care claims datasets is frequently criticized for lacking complete information on potential confounders.">
+<meta name="twitter:title" content="Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough">
+<meta name="twitter:description" content="Health studies that use administrative databases often lack complete information on confounders.">
 <meta name="twitter:image" content="https://ehsank.com/cover.png">
 <meta name="twitter:image-height" content="222">
 <meta name="twitter:image-width" content="770">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-sidebar docked slimcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">hdPS and its machine learning extensions in residual confounding control</h1>
+      <h1 class="quarto-secondary-nav-title">Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -110,11 +91,26 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">hdPS and its machine learning extensions in residual confounding control</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/ehsanx/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+      <a href="./">Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/ehsanx/psw" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Rethinking-Residual-Confounding-Bias-Reduction--Why-Vanilla-hdPS-Alone-is-No-Longer-Enough.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Rethinking-Residual-Confounding-Bias-Reduction--Why-Vanilla-hdPS-Alone-is-No-Longer-Enough.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+    <a href="" title="Share" id="sidebar-tool-dropdown-1" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-1">
         <li>
           <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
             <i class="bi bi-bi-twitter pe-1"></i>
@@ -140,7 +136,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Background</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">Abstract</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -201,31 +197,11 @@ div.csl-indent {
   <a href="./step5.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Step 5: Covariates</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./step6.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Step 6: Propensity</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./step7.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Step 7: Association</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ps.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Propensity score</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sens.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sensitivity</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./extension.html" class="sidebar-item-text sidebar-link">Challenges</a>
+            <a href="./extension.html" class="sidebar-item-text sidebar-link">Alternatives</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -233,14 +209,19 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pubmed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Literature</span></a>
+  <a href="./pubmed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Literature</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Developments</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./mllogic.html" class="sidebar-item-text sidebar-link">Machine learning</a>
+            <a href="./plasmode.html" class="sidebar-item-text sidebar-link">Plasmode Simulation</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -248,42 +229,22 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mllasso.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Pure ML</span></a>
+  <a href="./compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Compare</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mlhybrid.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Hybrid ML</span></a>
+  <a href="./results.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Results</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ensemble</span></a>
+  <a href="./results2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Refined Results</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tmle.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">TMLE</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mlcompare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare results</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./guideline.html" class="sidebar-item-text sidebar-link">Guideline</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./report.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reporting</span></a>
+  <a href="./takehome.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Take-aways</span></a>
   </div>
 </li>
       </ul>
@@ -293,51 +254,6 @@ div.csl-indent {
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./NHANES.html" class="sidebar-item-text sidebar-link">Appendix: NHANES</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index13.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Download cycle 8</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index15.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Download cycle 9</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Download cycle 10</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./analytic13.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Recoding cycle 8</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./analytic15.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Recoding cycle 9</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./analytic17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Recoding cycle 10</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./merge13to17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Merge three cycles</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -347,26 +263,22 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
-  <ul class="collapse">
-  <li><a href="#proposal-to-reduce-residual-confounding-bias" id="toc-proposal-to-reduce-residual-confounding-bias" class="nav-link" data-scroll-target="#proposal-to-reduce-residual-confounding-bias">Proposal to reduce residual confounding bias</a></li>
-  <li><a href="#purpose-of-the-workshop" id="toc-purpose-of-the-workshop" class="nav-link" data-scroll-target="#purpose-of-the-workshop">Purpose of the workshop</a></li>
-  <li><a href="#workshop-prerequisite" id="toc-workshop-prerequisite" class="nav-link" data-scroll-target="#workshop-prerequisite">Workshop prerequisite</a>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a>
   <ul class="collapse">
   <li><a href="#version-history" id="toc-version-history" class="nav-link" data-scroll-target="#version-history">Version history</a></li>
+  <li><a href="#r-codes" id="toc-r-codes" class="nav-link" data-scroll-target="#r-codes">R Codes</a></li>
   <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
   <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a></li>
   </ul></li>
-  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/edit/main/index.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/psw/edit/main/index.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">hdPS and its machine learning extensions in residual confounding control</h1>
+<h1 class="title d-none d-lg-block">Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough</h1>
 </div>
 
 
@@ -383,7 +295,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 3, 2023</p>
+      <p class="date">May 4, 2023</p>
     </div>
   </div>
   
@@ -394,40 +306,16 @@ div.csl-indent {
 </header>
 
 
-<section id="background" class="level1 unnumbered page-columns page-full">
-<p><img src="cover.png" title="hdPS and its machine learning extensions in residual confounding control" class="quarto-cover-image img-fluid"></p><h1 class="unnumbered">Background</h1>
-<p>The use of retrospective health care claims datasets is frequently criticized for lacking complete information on potential confounders. Ultimately, the treatment effects estimated utilizing such data sources may be subject to residual confounding. Digital electronic administrative records routinely collect a large volume of health-related information; and many of whom are usually not considered in conventional pharmacoepidemiological studies.</p>
-<section id="proposal-to-reduce-residual-confounding-bias" class="level2 unnumbered page-columns page-full">
-<h2 class="unnumbered anchored" data-anchor-id="proposal-to-reduce-residual-confounding-bias">Proposal to reduce residual confounding bias</h2>
-<p>In 2009, a high-dimensional propensity score (hdPS) algorithm was proposed that utilizes such information as surrogates or proxies for mismeasured and unobserved confounders in an effort to reduce residual confounding bias. Since then, many machine learning and semi-parametric extensions of this algorithm have been proposed to exploit the wealth of high-dimensional proxy information properly.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><span class="citation" data-cites="schneeweiss2009high">Schneeweiss et al. (<a href="references.html#ref-schneeweiss2009high" role="doc-biblioref">2009</a>)</span></p>
-</div></div></section>
-<section id="purpose-of-the-workshop" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="purpose-of-the-workshop">Purpose of the workshop</h2>
-<p>This workshop will</p>
-<ol type="1">
-<li>demonstrate logic, steps and implementation guidelines of hdPS utilizing an open data source as an example (using reproducible R codes),</li>
-<li>familiarize participants with the difference between propensity score vs.&nbsp;hdPS,</li>
-<li>explain the rationale for using the machine learning extensions of hdPS, and their statistical properties, and</li>
-<li>discuss advantages, controversies, and hdPS reporting guidelines while writing a manuscript.</li>
-</ol>
-</section>
-<section id="workshop-prerequisite" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="workshop-prerequisite">Workshop prerequisite</h2>
-<p>Attendees should have prerequisite knowledge of multiple regression analysis and working knowledge in R (e.g., basic data manipulation and regression fitting).</p>
+<section id="abstract" class="level1 unnumbered">
+<p><img src="cover.png" title="Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough" class="quarto-cover-image img-fluid"></p><h1 class="unnumbered">Abstract</h1>
+<p>Health studies that use administrative databases often lack complete information on confounders. On the other hand, a large number of additional diagnoses, procedures, and medication codes that are regularly recorded in healthcare encounters, are not used in epidemiological studies, due to their perceived lack of relevance to the study question. To address this residual confounding problem, researchers have developed the high-dimensional propensity score (hdPS) algorithm. This algorithm allows researchers to leverage this additional information as proxies for unmeasured and mis-measured covariates, which can help reduce residual confounding bias in the estimation of treatment effects. Since the hdPS algorithm deals with massive amounts of information, machine learning variable selection methods are proposed as an alternative. These methods have been shown to be effective in reducing bias, but it remains a challenge to estimate variance correctly in this context. Even doubly robust or targeted maximum likelihood estimators (TMLE) can struggle with this issue. To address this problem, we designed a simulation study to compare the performance of methods of the following categories: (1) vanilla hdPS, (2) machine learning and hybrid alternatives proposed in the literature, and (3) TMLE versions with two sets of candidate learners for super learning. We will evaluate these methods in terms of bias, variance (both model-based and empirical), and coverage. We will present a nationally representative analysis as a motivating example, explain how this study fits into the literature so far, and provide practical recommendations for practitioners based on our findings.</p>
 <section id="version-history" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="version-history">Version history</h3>
-<p>Different versions and updates of the materials were presented in the following sessions</p>
-<ul>
-<li><a href="https://www.birs.ca/events/2019/5-day-workshops/19w5027/schedule">Statistical issues in administrative data</a>, Banff International Research Station, Banff, Feb 2019.</li>
-<li><a href="https://ubcxzhang.github.io/VictoriaConference/program/">Statistics Conference in Genomics, Pharmaceutical Science, and Health Data Science</a>, August 15-17, 2022 University of Victoria, Victoria, BC</li>
-<li><a href="https://cheos.ubc.ca/events/wip-seminar-dr-ehsan-karim/">Work in Progress Seminar</a>, CHEOS, St.&nbsp;Paul’s Hospital (Hurlburt Auditorium), Dec 14th, 2022.</li>
-<li><a href="https://uwaterloo.ca/statistics-and-actuarial-science/events/seminar-ehsan-karim">Statistics and Biostatistics seminar series</a>, at the Department of Statistics and Actuarial Science, University of Waterloo, April 26, 2023.</li>
-<li><a href="https://epiresearch.org/annual-meeting/2023-meeting/2023-workshops/">2023 Society of Epidemiologic Research Workshops</a>, Virtual, May 4, 2023</li>
-<li>Conference on Statistics and Data Science with Applications in Biology, Genetics, Public Health, and Finance, Thompson Rivers University, Kamloops, August 21-24, 2023 (upcoming/scheduled).</li>
-</ul>
+<p>Materials were prepared for the deliveries of the <a href="https://uwaterloo.ca/statistics-and-actuarial-science/events/seminar-ehsan-karim">Statistics and Biostatistics seminar series</a>, at the Department of Statistics and Actuarial Science, University of Waterloo, April 26, 2023 — 4:00 PM EDT.</p>
+</section>
+<section id="r-codes" class="level3">
+<h3 class="anchored" data-anchor-id="r-codes">R Codes</h3>
+<p>R Codes for data creation and hdPS analysis can be found on the <a href="https://github.com/ehsanx/hdPSw/">GitHub repo</a> under <code>codes</code> directory.</p>
 </section>
 <section id="citation" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="citation">Citation</h3>
@@ -441,7 +329,7 @@ How to cite
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Karim, ME. (2023, May 4). High-dimensional propensity score and its machine learning extensions in residual confounding control in pharmacoepidemiologic studies. Zenodo. DOI: 10.5281/zenodo.7894083.</p>
+<p>Karim, ME. (2023, April 28). Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough. Zenodo. https://doi.org/10.5281/zenodo.7877767</p>
 </div>
 </div>
 </section>
@@ -450,12 +338,6 @@ How to cite
 <p>For any comments regarding this document, reach out to <a href="http://ehsank.com/">me</a>.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-schneeweiss2009high" class="csl-entry" role="doc-biblioentry">
-Schneeweiss, Sebastian, Jeremy A Rassen, Robert J Glynn, Jerry Avorn, Helen Mogun, and M Alan Brookhart. 2009. <span>“High-Dimensional Propensity Score Adjustment in Studies of Treatment Effects Using Health Care Claims Data.”</span> <em>Epidemiology (Cambridge, Mass.)</em> 20 (4): 512.
-</div>
-</div>
-</section>
 </section>
 </section>
 
