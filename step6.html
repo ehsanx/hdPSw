@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>hdPS and its machine learning extensions in residual confounding control - 7&nbsp; Step 4: Prioritize</title>
+<title>hdPS and its machine learning extensions in residual confounding control - 9&nbsp; Step 6: Propensity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,8 +112,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./step5.html" rel="next">
-<link href="./step3.html" rel="prev">
+<link href="./step7.html" rel="next">
+<link href="./step5.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -147,10 +147,9 @@ div.csl-indent {
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="hdPS and its machine learning extensions in residual confounding control - 7&nbsp; Step 4: Prioritize">
-<meta name="twitter:description" content="We need to make an educated guess about 3 components (i.e., make an assumption), that are used in the calculation of bias contributed by not adjusting for a covariate based on Bross (1966) formula:">
+<meta name="twitter:title" content="hdPS and its machine learning extensions in residual confounding control - 9&nbsp; Step 6: Propensity">
+<meta name="twitter:description" content="Then the hdPS can be used as matching, weighting, stratifying variables, or as covariates (usually in deciles) in outcome model.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -160,7 +159,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Step 4: Prioritize</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Step 6: Propensity</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -256,7 +255,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./step4.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Step 4: Prioritize</span></a>
+  <a href="./step4.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Step 4: Prioritize</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -266,7 +265,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./step6.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Step 6: Propensity</span></a>
+  <a href="./step6.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Step 6: Propensity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -410,20 +409,23 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#bross-formula" id="toc-bross-formula" class="nav-link active" data-scroll-target="#bross-formula"><span class="toc-section-number">7.1</span>  Bross formula</a></li>
-  <li><a href="#calculating-bias-from-a-recurrence-covariate" id="toc-calculating-bias-from-a-recurrence-covariate" class="nav-link" data-scroll-target="#calculating-bias-from-a-recurrence-covariate"><span class="toc-section-number">7.2</span>  Calculating bias from a recurrence covariate</a></li>
-  <li><a href="#calculating-bias-from-all-recurrence-covariates" id="toc-calculating-bias-from-all-recurrence-covariates" class="nav-link" data-scroll-target="#calculating-bias-from-all-recurrence-covariates"><span class="toc-section-number">7.3</span>  Calculating bias from all recurrence covariates</a></li>
-  <li><a href="#obtain-log-of-absolute-bias" id="toc-obtain-log-of-absolute-bias" class="nav-link" data-scroll-target="#obtain-log-of-absolute-bias"><span class="toc-section-number">7.4</span>  Obtain log of absolute-bias</a></li>
-  <li><a href="#convert-to-absolute-log-of-multiplicative-bias" id="toc-convert-to-absolute-log-of-multiplicative-bias" class="nav-link" data-scroll-target="#convert-to-absolute-log-of-multiplicative-bias"><span class="toc-section-number">7.5</span>  Convert to Absolute log of multiplicative bias</a></li>
+  <li><a href="#hdps-model" id="toc-hdps-model" class="nav-link active" data-scroll-target="#hdps-model"><span class="toc-section-number">9.1</span>  hdPS model</a>
+  <ul class="collapse">
+  <li><a href="#create-propensity-score-formula" id="toc-create-propensity-score-formula" class="nav-link" data-scroll-target="#create-propensity-score-formula"><span class="toc-section-number">9.1.1</span>  Create propensity score formula</a></li>
+  <li><a href="#fit-ps-model" id="toc-fit-ps-model" class="nav-link" data-scroll-target="#fit-ps-model"><span class="toc-section-number">9.1.2</span>  Fit PS model</a></li>
+  <li><a href="#obtain-ps" id="toc-obtain-ps" class="nav-link" data-scroll-target="#obtain-ps"><span class="toc-section-number">9.1.3</span>  Obtain PS</a></li>
+  <li><a href="#obtain-weights" id="toc-obtain-weights" class="nav-link" data-scroll-target="#obtain-weights"><span class="toc-section-number">9.1.4</span>  Obtain Weights</a></li>
+  <li><a href="#assessing-balance" id="toc-assessing-balance" class="nav-link" data-scroll-target="#assessing-balance"><span class="toc-section-number">9.1.5</span>  Assessing balance</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/edit/main/step4.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/edit/main/step6.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Step 4: Prioritize</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Step 6: Propensity</span></h1>
 </div>
 
 
@@ -438,201 +440,139 @@ div.csl-indent {
 
 </header>
 
-<div class="cell" data-hash="step4_cache/html/unnamed-chunk-1_a903b1cdd345077a5496b4455f55c46a">
+<div class="cell" data-hash="step6_cache/html/unnamed-chunk-1_08b6510f7047445ad2939860a8207bb7">
 
 </div>
-<section id="bross-formula" class="level2 page-columns page-full" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="bross-formula"><span class="header-section-number">7.1</span> Bross formula</h2>
-<p>We need to make an educated guess about 3 components (i.e., <mark>make an assumption</mark>), that are used in the calculation of <mark>bias contributed by not adjusting for a covariate</mark> based on <a href="https://pubmed.ncbi.nlm.nih.gov/5966011/">Bross (1966)</a> formula:</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>Bross formula <span class="citation" data-cites="bross1966spurious schneeweiss2006sensitivity">(<a href="references.html#ref-bross1966spurious" role="doc-biblioref">Bross 1966</a>; <a href="references.html#ref-schneeweiss2006sensitivity" role="doc-biblioref">Schneeweiss 2006</a>)</span> for the Bias Multiplier considers both the imbalance in the prevalence of the unmeasured confounder between the exposure groups and the association between the confounder and the outcome to assess the potential bias.</p>
-</div></div><ul>
-<li>prevalence of a binary unmeasured confounder (<span class="math inline">\(U\)</span>) among exposed (<span class="math inline">\(P_{UA_1}\)</span>)</li>
-<li>prevalence of that binary unmeasured confounder among unexposed (<span class="math inline">\(P_{UA_0}\)</span>)</li>
-<li>association between that binary unmeasured confounder and the outcome (<span class="math inline">\(RR_{UY} = \frac{P_{UY_1}}{P_{UY_1}}\)</span>)</li>
-</ul>
-<p>The above components can help us calculate <span class="math inline">\(bias\)</span> amount (known as <mark>‘Bias Multiplier’</mark>) using the Bross formula when we omit adjusting for <span class="math inline">\(U\)</span>:</p>
-<p><span class="math display">\[\text{Bias}_U = \frac{P_{UA_1} (RR_{UY} - 1) + 1}{P_{UA_0} (RR_{UY} - 1) + 1}\]</span></p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>These are the ingredients of the Bross formula. This formula is helpful for understanding the impact of unmeasured confounding of a binary variable. We have to put assumed prevalence and risk ratio associated with an unmeasured confounder.</p>
-</div></div></section>
-<section id="calculating-bias-from-a-recurrence-covariate" class="level2 page-columns page-full" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="calculating-bias-from-a-recurrence-covariate"><span class="header-section-number">7.2</span> Calculating bias from a recurrence covariate</h2>
-<p>For recurrence covariates (<span class="math inline">\(R\)</span>), we do not need to assume, we just <mark>plug-in <span class="math inline">\(R\)</span> instead of <span class="math inline">\(U\)</span></mark> in the following calculations:</p>
-<ul>
-<li>prevalence of a binary recurrence variable among exposed (<span class="math inline">\(P_{RA_1}\)</span>)</li>
-<li>prevalence of that binary recurrence variable among unexposed (<span class="math inline">\(P_{RA_0}\)</span>)</li>
-<li>association between that binary recurrence variable and the outcome (<span class="math inline">\(RR_{RY} = \frac{P_{RY_1}}{P_{RY_1}}\)</span>)</li>
-</ul>
-<p>These components can help us empirically calculate <span class="math inline">\(bias\)</span> amount:</p>
-<p><span class="math display">\[\text{Bias}_R = \frac{P_{RA_1} (RR_{RY} - 1) + 1}{P_{RA_0} (RR_{RY} - 1) + 1}\]</span></p>
-<p>Here, <span class="math inline">\(RR_{RY}\)</span> is the crude risk ratio between the recurrence covariate and the outcome, <span class="math inline">\(Y\)</span> is the outcome, <span class="math inline">\(A\)</span> is the exposure, and <span class="math inline">\(R\)</span> is a recurrence covariate.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>For recurrence covariates, we do not need to assume, we can basically calculate these numbers (<span class="math inline">\(log-absolute-bias\)</span>) for all of the recurrence covariates <span class="citation" data-cites="schneeweiss2009high">(<a href="references.html#ref-schneeweiss2009high" role="doc-biblioref">Schneeweiss et al. 2009</a>)</span>. For each data dimension, we can rank each of the recurrence covariates based on the amount of bias (confounding or imbalance) it could likely adjust.</p>
-</div></div></section>
-<section id="calculating-bias-from-all-recurrence-covariates" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="calculating-bias-from-all-recurrence-covariates"><span class="header-section-number">7.3</span> Calculating bias from all recurrence covariates</h2>
-<p>In our example, we simply plug-in each recurrence covariates one-by-one to calculate <span class="math inline">\(log-absolute-bias\)</span>:</p>
-<div class="cell" data-hash="step4_cache/html/unnamed-chunk-2_6e98ea6b50ebc4e8af3bb2bdbe82b256">
+<section id="hdps-model" class="level2 page-columns page-full" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="hdps-model"><span class="header-section-number">9.1</span> hdPS model</h2>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">R=rec_dx_D64_once</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">R=rec_dx_D75_sporadic</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">…</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">R=rec_dx_E07_frequent</td>
-</tr>
-</tbody>
-</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/psmodelhd.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
 </div>
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>C = investigator-specified covariates and EC = hdPS covariates <span class="citation" data-cites="schneeweiss2009high">(<a href="references.html#ref-schneeweiss2009high" role="doc-biblioref">Schneeweiss et al. 2009</a>)</span></p>
+</div></div><p>Then the hdPS can be used as matching, weighting, stratifying variables, or as covariates (usually in deciles) in outcome model.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="citation" data-cites="wyss2022machine">(<a href="references.html#ref-wyss2022machine" role="doc-biblioref">Wyss et al. 2022</a>)</span></p>
+</div></div><section id="create-propensity-score-formula" class="level3 page-columns page-full" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="create-propensity-score-formula"><span class="header-section-number">9.1.1</span> Create propensity score formula</h3>
+<div class="cell" data-hash="step6_cache/html/unnamed-chunk-3_237485c957ff6b1767a35c6cc9434606">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>hdps.data<span class="sc">$</span>exposure <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">I</span>(hdps.data<span class="sc">$</span>obese<span class="sc">==</span><span class="st">'Yes'</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>hdps.data<span class="sc">$</span>outcome <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">I</span>(hdps.data<span class="sc">$</span>diabetes<span class="sc">==</span><span class="st">'Yes'</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>proxy.list.sel <span class="ot">&lt;-</span> <span class="fu">names</span>(out3<span class="sc">$</span>autoselected_covariate_df[,<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>proxyform <span class="ot">&lt;-</span> <span class="fu">paste0</span>(proxy.list.sel, <span class="at">collapse =</span> <span class="st">"+"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>covform <span class="ot">&lt;-</span> <span class="fu">paste0</span>(investigator.specified.covariates, <span class="at">collapse =</span> <span class="st">"+"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="step6_cache/html/unnamed-chunk-4_5d90b24d51436ada2b150081067211b5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rhsformula <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">c</span>(covform, proxyform), <span class="at">collapse =</span> <span class="st">"+"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ps.formula <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">"exposure"</span>, <span class="st">"~"</span>, rhsformula))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ps.formula</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; exposure ~ age.cat + sex + education + race + marital + income + </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     born + year + diabetes.family.history + medical.access + </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     smoking + diet.healthy + physical.activity + sleep + uric.acid + </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     protein.total + bilirubin.total + phosphorus + sodium + potassium + </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     globulin + calcium.total + systolicBP + diastolicBP + high.cholesterol + </span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_I10_once + rec_dx_R73_once + rec_dx_I10_frequent + </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_R60_once + rec_dx_E78_once + rec_dx_M79_once + rec_dx_E87_once + </span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_I51_once + rec_dx_I50_once + rec_dx_D75_once + rec_dx_K21_once + </span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_Z79_once + rec_dx_N28_once + rec_dx_F41_once + rec_dx_E79_once + </span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_M10_once + rec_dx_M1A_once + rec_dx_L70_once + rec_dx_F32_once + </span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_I80_once + rec_dx_F90_once + rec_dx_F43_once + rec_dx_I50_frequent + </span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_B00_once + rec_dx_R12_once + rec_dx_N19_once + rec_dx_B20_once + </span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_E28_frequent + rec_dx_R07_once + rec_dx_M19_once + </span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_I48_once + rec_dx_G47_once + rec_dx_T14_once + rec_dx_I70_once + </span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_M06_once + rec_dx_N40_once + rec_dx_R51_once + rec_dx_R21_once + </span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_J45_once + rec_dx_H40_once + rec_dx_K31_once + rec_dx_I63_once + </span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_H10_once + rec_dx_R52_once + rec_dx_R19_once + rec_dx_N95_once + </span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_K92_once + rec_dx_J20_once + rec_dx_E28_once + rec_dx_R32_once + </span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_M13_once + rec_dx_G30_once + rec_dx_J98_once + rec_dx_N52_once + </span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_I49_once + rec_dx_N30_once + rec_dx_N42_once + rec_dx_R39_once + </span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_N92_once + rec_dx_B96_once + rec_dx_H40_frequent + </span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_M54_once + rec_dx_K59_once + rec_dx_G25_once + rec_dx_F31_once + </span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_T78_once + rec_dx_R41_once + rec_dx_G31_once + rec_dx_I99_once + </span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_G30_frequent + rec_dx_C50_once + rec_dx_F39_once + </span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_R06_once + rec_dx_F17_once + rec_dx_K30_once + rec_dx_R45_once + </span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_K25_once + rec_dx_B37_once + rec_dx_L08_once + rec_dx_T88_once + </span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_J42_once + rec_dx_R10_once + rec_dx_M06_frequent + </span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_G20_once + rec_dx_E07_once + rec_dx_K58_once + rec_dx_R35_once + </span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_K04_once + rec_dx_R05_once + rec_dx_K08_once + rec_dx_I20_once + </span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_H57_once + rec_dx_R25_once + rec_dx_H66_once + rec_dx_R42_once + </span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_B20_frequent + rec_dx_I48_frequent + rec_dx_M62_once + </span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rec_dx_G43_once + rec_dx_F29_once</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>This is an overly simplistic scenario where we are adding only the main effects in the non-transformed form.</p>
+</div></div></section>
+<section id="fit-ps-model" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="fit-ps-model"><span class="header-section-number">9.1.2</span> Fit PS model</h3>
+<div class="cell" data-hash="step6_cache/html/unnamed-chunk-5_0553aacdf77b5b05c96308216ea5e74f">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(WeightIt)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>W.out <span class="ot">&lt;-</span> <span class="fu">weightit</span>(ps.formula, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> hdps.data, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">estimand =</span> <span class="st">"ATE"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">method =</span> <span class="st">"ps"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="obtain-log-of-absolute-bias" class="level2 page-columns page-full" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="obtain-log-of-absolute-bias"><span class="header-section-number">7.4</span> Obtain log of absolute-bias</h2>
-<p>We calculate <span class="math inline">\(log-absolute-bias\)</span> for all recurrence covariates.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>Absolute log of the Bias Multiplier, <span class="math inline">\(log-absolute-bias\)</span>, is a symmetric measure of the potential bias introduced by the recurrence covariate, making it easier to compare and rank recurrence covariates.</p>
-</div></div><div class="cell" data-hash="step4_cache/html/unnamed-chunk-3_6bb39df2ea328d307f959c122cf8c834">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>out3 <span class="ot">&lt;-</span> <span class="fu">get_prioritised_covariates</span>(<span class="at">df =</span> out2,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">patientIdVarname =</span> <span class="st">"idx"</span>, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">exposureVector =</span> basetable<span class="sc">$</span>exposure,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">outcomeVector =</span> basetable<span class="sc">$</span>outcome,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">patientIdVector =</span> patientIds, </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">k =</span> <span class="dv">100</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sorted_values <span class="ot">&lt;-</span> <span class="fu">sort</span>(out3<span class="sc">$</span>multiplicative_bias, </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="obtain-ps" class="level3 page-columns page-full" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="obtain-ps"><span class="header-section-number">9.1.3</span> Obtain PS</h3>
+<div class="cell" data-hash="step6_cache/html/unnamed-chunk-6_b14ae0d1b721fa1af64d8c045663784b">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>hdps.data<span class="sc">$</span>ps <span class="ot">&lt;-</span> W.out<span class="sc">$</span>ps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This would return absolute log of the multiplicative bias for each recurrence covariate (by univariate Bross formula). We can use this information to prioritize recurrence covariates in the next step.</p>
-</section>
-<section id="convert-to-absolute-log-of-multiplicative-bias" class="level2 page-columns page-full" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="convert-to-absolute-log-of-multiplicative-bias"><span class="header-section-number">7.5</span> Convert to Absolute log of multiplicative bias</h2>
-<p>Here are the few covariates and associated Absolute log of the multiplicative bias:</p>
-<div class="cell" data-hash="step4_cache/html/unnamed-chunk-4_ae400e36504b02783987a6c53b5abc43">
+<div class="cell" data-hash="step6_cache/html/unnamed-chunk-7_04eb3aee36003075328c1e1cb56e29df">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">rec_dx_I10_once : 0.115</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">rec_dx_R73_once : 0.088</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">rec_dx_I10_frequent : 0.068</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">rec_dx_R60_once : 0.054</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">rec_dx_E78_once : 0.038</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">rec_dx_M79_once : 0.017</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">rec_dx_E87_once : 0.015</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">rec_dx_I51_once : 0.013</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">rec_dx_I50_once : 0.011</td>
-</tr>
-</tbody>
-</table>
+<p><img src="step6_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>And here are translated table with description:</p>
-<div class="cell" data-hash="step4_cache/html/unnamed-chunk-5_f0c9d19103f22d9051a4cc7f2b1c1ba5">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Always a good idea to check propensity score overlap in both exposure groups</p>
+</div></div></section>
+<section id="obtain-weights" class="level3 page-columns page-full" data-number="9.1.4">
+<h3 data-number="9.1.4" class="anchored" data-anchor-id="obtain-weights"><span class="header-section-number">9.1.4</span> Obtain Weights</h3>
+<div class="cell" data-hash="step6_cache/html/unnamed-chunk-8_e0ccc7c1e13a86e74f142f1a5ccbd3c2">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hdps.data<span class="sc">$</span>w <span class="ot">&lt;-</span> W.out<span class="sc">$</span>weights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="step6_cache/html/unnamed-chunk-9_a2e64b842c983cef62ecc99ca373670b">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Hypertension : 0.115</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Elevated blood glucose level : 0.088</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Hypertension : 0.068</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Edema : 0.054</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Pure hypercholesterolemia : 0.038</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">musculoskeletal pain : 0.017</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Hypokalemia : 0.015</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Heart disease : 0.013</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Heart failure : 0.011</td>
-</tr>
-</tbody>
-</table>
+<p><img src="step6_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p>Some of the empirical covariates with top Absolute log of the multiplicative bias are actually relevant to the outcome (diabetes): Hypertension, Elevated blood glucose level , etc. <span class="citation" data-cites="choi2001risk">(<a href="references.html#ref-choi2001risk" role="doc-biblioref">Choi and Shi 2001</a>)</span></p>
-</div></div><div class="cell" data-hash="step4_cache/html/unnamed-chunk-6_ba8e213ee3c38ab1ac122a11cb59247d">
-
-</div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-SMD vs Bias multiplier
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Standardized mean difference (SMD) is useful for assessing the balance in the propensity score literature. However, Bross formula incorporates outcome information. In the investigation of empirical covariates or recurrence covariates where interpretations of these covariates are unknown, it may seem more safe to use the multiplicative bias term from the Bross formula to identify proxy covariates that are helpful in predicting the outcome.</p>
+<p>Always a good idea to check the summary statistics of the weights to assess whether there are extreme weights</p>
+</div></div></section>
+<section id="assessing-balance" class="level3 page-columns page-full" data-number="9.1.5">
+<h3 data-number="9.1.5" class="anchored" data-anchor-id="assessing-balance"><span class="header-section-number">9.1.5</span> Assessing balance</h3>
+<div class="cell" data-hash="step6_cache/html/unnamed-chunk-10_6b06e55214abe99d8cb693ab7211aa37">
+<div class="cell-output-display">
+<p><img src="step6_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p><span class="citation" data-cites="stuart2013prognostic">(<a href="references.html#ref-stuart2013prognostic" role="doc-biblioref">Stuart, Lee, and Leacy 2013</a>)</span></p>
-</div></div><div class="cell" data-hash="step4_cache/html/unnamed-chunk-7_05d346fd4909e25461522c6f6bc957ae">
+<p>Always a good idea to assess balance. Here we are measuring against SMD 0.1. Use <code>love.plot</code> function from the <code>cobalt</code> package. See more descriptions of balanced diagnostics <a href="https://ehsanx.github.io/psw/balance.html">elsewhere</a> for a propensity score context.</p>
+</div></div><div class="cell" data-hash="step6_cache/html/unnamed-chunk-11_49e5360f23dd5adc14c0bb7f4fb6ce3d">
 
 </div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-bross1966spurious" class="csl-entry" role="doc-biblioentry">
-Bross, Irwin DJ. 1966. <span>“Spurious Effects from an Extraneous Variable.”</span> <em>Journal of Chronic Diseases</em> 19 (6): 637–47.
-</div>
-<div id="ref-choi2001risk" class="csl-entry" role="doc-biblioentry">
-Choi, BCK, and F Shi. 2001. <span>“Risk Factors for Diabetes Mellitus by Age and Sex: Results of the National Population Health Survey.”</span> <em>Diabetologia</em> 44: 1221–31.
-</div>
-<div id="ref-schneeweiss2006sensitivity" class="csl-entry" role="doc-biblioentry">
-Schneeweiss, Sebastian. 2006. <span>“Sensitivity Analysis and External Adjustment for Unmeasured Confounders in Epidemiologic Database Studies of Therapeutics.”</span> <em>Pharmacoepidemiology and Drug Safety</em> 15 (5): 291–303.
-</div>
 <div id="ref-schneeweiss2009high" class="csl-entry" role="doc-biblioentry">
 Schneeweiss, Sebastian, Jeremy A Rassen, Robert J Glynn, Jerry Avorn, Helen Mogun, and M Alan Brookhart. 2009. <span>“High-Dimensional Propensity Score Adjustment in Studies of Treatment Effects Using Health Care Claims Data.”</span> <em>Epidemiology (Cambridge, Mass.)</em> 20 (4): 512.
 </div>
-<div id="ref-stuart2013prognostic" class="csl-entry" role="doc-biblioentry">
-Stuart, Elizabeth A, Brian K Lee, and Finbarr P Leacy. 2013. <span>“Prognostic Score–Based Balance Measures Can Be a Useful Diagnostic for Propensity Score Methods in Comparative Effectiveness Research.”</span> <em>Journal of Clinical Epidemiology</em> 66 (8): S84–90.
+<div id="ref-wyss2022machine" class="csl-entry" role="doc-biblioentry">
+Wyss, Richard, Chen Yanover, Tal El-Hay, Dimitri Bennett, Robert W Platt, Andrew R Zullo, Grammati Sari, et al. 2022. <span>“Machine Learning for Improving High-Dimensional Proxy Confounder Adjustment in Healthcare Database Studies: An Overview of the Current Literature.”</span> <em>Pharmacoepidemiology and Drug Safety</em> 31 (9): 932–43.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -771,13 +711,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./step3.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Step 3: Recurrence</span></span>
+      <a href="./step5.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Step 5: Covariates</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./step5.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Step 5: Covariates</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./step7.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Step 7: Association</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

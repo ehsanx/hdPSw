@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - 5&nbsp; Step 2: Empirical</title>
+<title>hdPS and its machine learning extensions in residual confounding control - 5&nbsp; Step 2: Empirical</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -150,7 +150,7 @@ div.csl-indent {
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
-<meta name="twitter:title" content="Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - 5&nbsp; Step 2: Empirical">
+<meta name="twitter:title" content="hdPS and its machine learning extensions in residual confounding control - 5&nbsp; Step 2: Empirical">
 <meta name="twitter:description" content="Based on the merged dataset, we identify which patients were linked in both databases. Using those IDs, we want to sort the list of candidate empirical covariates.">
 <meta name="twitter:card" content="summary">
 </head>
@@ -174,26 +174,11 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough</a> 
-        <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/ehsanx/psw" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+      <a href="./">hdPS and its machine learning extensions in residual confounding control</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ehsanx/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Rethinking-Residual-Confounding-Bias-Reduction--Why-Vanilla-hdPS-Alone-is-No-Longer-Enough.pdf">
-            <i class="bi bi-bi-file-pdf pe-1"></i>
-          Download PDF
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Rethinking-Residual-Confounding-Bias-Reduction--Why-Vanilla-hdPS-Alone-is-No-Longer-Enough.epub">
-            <i class="bi bi-bi-journal pe-1"></i>
-          Download ePub
-          </a>
-        </li>
-    </ul>
-    <a href="" title="Share" id="sidebar-tool-dropdown-1" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-1">
         <li>
           <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
             <i class="bi bi-bi-twitter pe-1"></i>
@@ -219,7 +204,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Abstract</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Background</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -280,11 +265,31 @@ div.csl-indent {
   <a href="./step5.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Step 5: Covariates</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./step6.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Step 6: Propensity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./step7.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Step 7: Association</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ps.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Propensity score</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sens.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sensitivity</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./extension.html" class="sidebar-item-text sidebar-link">Alternatives</a>
+            <a href="./extension.html" class="sidebar-item-text sidebar-link">Challenges</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -292,19 +297,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pubmed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Literature</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Developments</span></a>
+  <a href="./pubmed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Literature</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./plasmode.html" class="sidebar-item-text sidebar-link">Plasmode Simulation</a>
+            <a href="./mllogic.html" class="sidebar-item-text sidebar-link">Machine learning</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -312,22 +312,42 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Compare</span></a>
+  <a href="./mllasso.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Pure ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Results</span></a>
+  <a href="./mlhybrid.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Hybrid ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Refined Results</span></a>
+  <a href="./sl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ensemble</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./takehome.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Take-aways</span></a>
+  <a href="./tmle.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">TMLE</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mlcompare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare results</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./guideline.html" class="sidebar-item-text sidebar-link">Guideline</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./report.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reporting</span></a>
   </div>
 </li>
       </ul>
@@ -337,6 +357,51 @@ div.csl-indent {
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./NHANES.html" class="sidebar-item-text sidebar-link">Appendix: NHANES</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index13.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Download cycle 8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index15.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Download cycle 9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Download cycle 10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic13.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Recoding cycle 8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic15.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Recoding cycle 9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Recoding cycle 10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./merge13to17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Merge three cycles</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -348,9 +413,14 @@ div.csl-indent {
   <ul>
   <li><a href="#sort-by-prevalence" id="toc-sort-by-prevalence" class="nav-link active" data-scroll-target="#sort-by-prevalence"><span class="toc-section-number">5.1</span>  Sort by prevalence</a></li>
   <li><a href="#choose-granularity" id="toc-choose-granularity" class="nav-link" data-scroll-target="#choose-granularity"><span class="toc-section-number">5.2</span>  Choose Granularity</a></li>
-  <li><a href="#retain-top-n-empirical-covariates" id="toc-retain-top-n-empirical-covariates" class="nav-link" data-scroll-target="#retain-top-n-empirical-covariates"><span class="toc-section-number">5.3</span>  Retain top n empirical covariates</a></li>
+  <li><a href="#retain-top-n-empirical-covariates" id="toc-retain-top-n-empirical-covariates" class="nav-link" data-scroll-target="#retain-top-n-empirical-covariates"><span class="toc-section-number">5.3</span>  Retain top n empirical covariates</a>
+  <ul class="collapse">
+  <li><a href="#long-format-data" id="toc-long-format-data" class="nav-link" data-scroll-target="#long-format-data"><span class="toc-section-number">5.3.1</span>  Long format data</a></li>
+  <li><a href="#updated-frequency-data" id="toc-updated-frequency-data" class="nav-link" data-scroll-target="#updated-frequency-data"><span class="toc-section-number">5.3.2</span>  Updated frequency data</a></li>
+  <li><a href="#total-number-of-codes-retained" id="toc-total-number-of-codes-retained" class="nav-link" data-scroll-target="#total-number-of-codes-retained"><span class="toc-section-number">5.3.3</span>  Total number of codes retained</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/psw/edit/main/step2.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/edit/main/step2.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -378,8 +448,15 @@ div.csl-indent {
 </div>
 <section id="sort-by-prevalence" class="level2 page-columns page-full" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="sort-by-prevalence"><span class="header-section-number">5.1</span> Sort by prevalence</h2>
-<p>Check out the frequency of each codes: Here is the list of top 10:</p>
-<div class="cell" data-hash="step2_cache/html/unnamed-chunk-2_2b0c86a67c8fa25f78e28d666d023417">
+<p>Check out the frequency of each codes:</p>
+<div class="cell" data-hash="step2_cache/html/unnamed-chunk-2_a8f2b31874e22e5b6dca214ce7746a5c">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">icd10 =</span> <span class="fu">names</span>(<span class="fu">sort</span>(<span class="fu">table</span>(dfx<span class="sc">$</span>icd10), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">count =</span> <span class="fu">sort</span>(<span class="fu">table</span>(dfx<span class="sc">$</span>icd10), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="step2_cache/html/unnamed-chunk-3_97ba20a6067e218e598c90abf5da2e61">
 <div class="cell-output-display">
 
 <table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -436,7 +513,10 @@ div.csl-indent {
 
 </div>
 </div>
-<p>However, some may be associated with lower counts (e.g., less than 20).</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Only top 10 prevalent codes are shown.</p>
+</div></div><p>However, some may be associated with lower counts (e.g., less than 20).</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -469,19 +549,24 @@ Restrictions
 </div></div></section>
 <section id="retain-top-n-empirical-covariates" class="level2 page-columns page-full" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="retain-top-n-empirical-covariates"><span class="header-section-number">5.3</span> Retain top n empirical covariates</h2>
-<div class="cell" data-hash="step2_cache/html/unnamed-chunk-3_44e80ae52fff54fdd7e2300b17a6fa15">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> <span class="fu">suppressMessages</span>(<span class="fu">get_candidate_covariates</span>(<span class="at">df =</span> dfx,  </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">domainVarname =</span> <span class="st">"domain"</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">eventCodeVarname =</span> <span class="st">"icd10"</span>, </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">patientIdVarname =</span> <span class="st">"idx"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">patientIdVector =</span> patientIds,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">n =</span> <span class="dv">200</span>, </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">min_num_patients =</span> <span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="step2_cache/html/unnamed-chunk-4_ece75535556b6c3df6a39a7fd8f7bdb1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(autoCovariateSelection)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> <span class="fu">get_candidate_covariates</span>(<span class="at">df =</span> dfx,  </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">domainVarname =</span> <span class="st">"domain"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">eventCodeVarname =</span> <span class="st">"icd10"</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">patientIdVarname =</span> <span class="st">"idx"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">patientIdVector =</span> patientIds,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">n =</span> <span class="dv">200</span>, </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">min_num_patients =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>You can use <code>autoCovariateSelection</code> package to implement these restrictions <span class="citation" data-cites="autoCovariateSelection">(<a href="references.html#ref-autoCovariateSelection" role="doc-biblioref">Robert 2020</a>)</span>.</p>
-</div></div><div class="cell" data-hash="step2_cache/html/unnamed-chunk-4_14fda0471a91f77498088857cd09ee2b">
+</div></div><section id="long-format-data" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="long-format-data"><span class="header-section-number">5.3.1</span> Long format data</h3>
+<div class="cell" data-hash="step2_cache/html/unnamed-chunk-5_9f0ed9896f1cc43e70f14bb8ee04ca04">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>out1 <span class="ot">&lt;-</span> step1<span class="sc">$</span>covars_data</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(out1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -490,6 +575,118 @@ Restrictions
   </script>
 </div>
 </div>
+</div>
+</section>
+<section id="updated-frequency-data" class="level3 page-columns page-full" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="updated-frequency-data"><span class="header-section-number">5.3.2</span> Updated frequency data</h3>
+<div class="cell" data-hash="step2_cache/html/unnamed-chunk-6_384b92be4604663b9fb0bdcb0bb7c605">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">icd10 =</span> <span class="fu">names</span>(<span class="fu">table</span>(out1<span class="sc">$</span>icd10)),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">count =</span> <span class="fu">as.numeric</span>(<span class="fu">table</span>(out1<span class="sc">$</span>icd10))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="step2_cache/html/unnamed-chunk-7_0df70df27a60c4d27d8bf5d51c54c91f">
+<div class="cell-output-display">
+
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> ICD10 Code </th>
+   <th style="text-align:right;"> Count </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> dx_A49 </td>
+   <td style="text-align:right;"> 44 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dx_B00 </td>
+   <td style="text-align:right;"> 35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dx_B20 </td>
+   <td style="text-align:right;"> 44 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dx_B35 </td>
+   <td style="text-align:right;"> 41 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dx_B37 </td>
+   <td style="text-align:right;"> 20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dx_B96 </td>
+   <td style="text-align:right;"> 30 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Only first few code frequencies are shown (alphabetic order), that were selected based on the restrictions <code>n</code> = 200 and <code>min_num_patients</code> = 20.</p>
+</div></div><div class="cell" data-hash="step2_cache/html/unnamed-chunk-8_413ea32d7ad1e359a12afc2eac09415c">
+<div class="cell-output-display">
+
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> ICD10 Code </th>
+   <th style="text-align:right;"> Count </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 121 </td>
+   <td style="text-align:left;"> dx_R73 </td>
+   <td style="text-align:right;"> 431 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 122 </td>
+   <td style="text-align:left;"> dx_T14 </td>
+   <td style="text-align:right;"> 167 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 123 </td>
+   <td style="text-align:left;"> dx_T78 </td>
+   <td style="text-align:right;"> 201 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 124 </td>
+   <td style="text-align:left;"> dx_T88 </td>
+   <td style="text-align:right;"> 23 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 125 </td>
+   <td style="text-align:left;"> dx_Z79 </td>
+   <td style="text-align:right;"> 489 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 126 </td>
+   <td style="text-align:left;"> dx_Z95 </td>
+   <td style="text-align:right;"> 26 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Only last few code frequencies are shown (alphabetic order).</p>
+</div></div></section>
+<section id="total-number-of-codes-retained" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="total-number-of-codes-retained"><span class="header-section-number">5.3.3</span> Total number of codes retained</h3>
+<div class="cell" data-hash="step2_cache/html/unnamed-chunk-9_1bc499cba5d184ecabfc3dadd6bc22a6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 126</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="step2_cache/html/unnamed-chunk-10_ba6368f39f462224c224b40037224881">
+
 </div>
 
 
@@ -504,6 +701,7 @@ Schneeweiss, Sebastian, Jeremy A Rassen, Robert J Glynn, Jerry Avorn, Helen Mogu
 Schuster, Tibor, Menglan Pang, and Robert W Platt. 2015. <span>“On the Role of Marginal Confounder Prevalence–Implications for the High-Dimensional Propensity Score Algorithm.”</span> <em>Pharmacoepidemiology and Drug Safety</em> 24 (9): 1004–7.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->

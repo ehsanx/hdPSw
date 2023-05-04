@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - Plasmode Simulation</title>
+<title>hdPS and its machine learning extensions in residual confounding control - 12&nbsp; Sensitivity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -49,8 +49,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./compare.html" rel="next">
-<link href="./dr.html" rel="prev">
+<link href="./extension.html" rel="next">
+<link href="./ps.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -81,10 +81,11 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
-<meta name="twitter:title" content="Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - Plasmode Simulation">
-<meta name="twitter:description" content="Franklin et al.&nbsp;2014: resampling from the observed covariate and exposure data without modification in all simulated datasets to preserve the associations among the following variables.">
+
+<meta name="twitter:title" content="hdPS and its machine learning extensions in residual confounding control - 12&nbsp; Sensitivity">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -94,7 +95,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Plasmode Simulation</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sensitivity</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -107,26 +108,11 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough</a> 
-        <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/ehsanx/psw" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+      <a href="./">hdPS and its machine learning extensions in residual confounding control</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ehsanx/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Rethinking-Residual-Confounding-Bias-Reduction--Why-Vanilla-hdPS-Alone-is-No-Longer-Enough.pdf">
-            <i class="bi bi-bi-file-pdf pe-1"></i>
-          Download PDF
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Rethinking-Residual-Confounding-Bias-Reduction--Why-Vanilla-hdPS-Alone-is-No-Longer-Enough.epub">
-            <i class="bi bi-bi-journal pe-1"></i>
-          Download ePub
-          </a>
-        </li>
-    </ul>
-    <a href="" title="Share" id="sidebar-tool-dropdown-1" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-1">
         <li>
           <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
             <i class="bi bi-bi-twitter pe-1"></i>
@@ -152,7 +138,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Abstract</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Background</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -213,11 +199,31 @@ div.csl-indent {
   <a href="./step5.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Step 5: Covariates</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./step6.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Step 6: Propensity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./step7.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Step 7: Association</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ps.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Propensity score</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sens.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sensitivity</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./extension.html" class="sidebar-item-text sidebar-link">Alternatives</a>
+            <a href="./extension.html" class="sidebar-item-text sidebar-link">Challenges</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -225,19 +231,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pubmed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Literature</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Developments</span></a>
+  <a href="./pubmed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Literature</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./plasmode.html" class="sidebar-item-text sidebar-link active">Plasmode Simulation</a>
+            <a href="./mllogic.html" class="sidebar-item-text sidebar-link">Machine learning</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -245,22 +246,42 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Compare</span></a>
+  <a href="./mllasso.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Pure ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Results</span></a>
+  <a href="./mlhybrid.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Hybrid ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Refined Results</span></a>
+  <a href="./sl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ensemble</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./takehome.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Take-aways</span></a>
+  <a href="./tmle.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">TMLE</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mlcompare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare results</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./guideline.html" class="sidebar-item-text sidebar-link">Guideline</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./report.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reporting</span></a>
   </div>
 </li>
       </ul>
@@ -270,6 +291,51 @@ div.csl-indent {
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./NHANES.html" class="sidebar-item-text sidebar-link">Appendix: NHANES</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index13.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Download cycle 8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index15.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Download cycle 9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Download cycle 10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic13.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Recoding cycle 8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic15.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Recoding cycle 9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Recoding cycle 10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./merge13to17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Merge three cycles</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -279,17 +345,20 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#variables-used" id="toc-variables-used" class="nav-link active" data-scroll-target="#variables-used">Variables used</a></li>
-  <li><a href="#true-outcome-model" id="toc-true-outcome-model" class="nav-link" data-scroll-target="#true-outcome-model">True outcome model</a></li>
+  <li><a href="#sensitivity-analysis-for-k" id="toc-sensitivity-analysis-for-k" class="nav-link active" data-scroll-target="#sensitivity-analysis-for-k"><span class="toc-section-number">12.1</span>  Sensitivity analysis for <code>k</code></a>
+  <ul class="collapse">
+  <li><a href="#create-propensity-score-formula" id="toc-create-propensity-score-formula" class="nav-link" data-scroll-target="#create-propensity-score-formula"><span class="toc-section-number">12.1.1</span>  Create propensity score formula</a></li>
+  </ul></li>
+  <li><a href="#sensitivity-analysis-for-n" id="toc-sensitivity-analysis-for-n" class="nav-link" data-scroll-target="#sensitivity-analysis-for-n"><span class="toc-section-number">12.2</span>  Sensitivity analysis for <code>n</code></a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/psw/edit/main/plasmode.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/edit/main/sens.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Plasmode Simulation</h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sensitivity</span></h1>
 </div>
 
 
@@ -304,74 +373,53 @@ div.csl-indent {
 
 </header>
 
-<p><a href="https://pubmed.ncbi.nlm.nih.gov/24587587/">Franklin et al.&nbsp;2014</a>: resampling from the observed covariate and exposure data without modification in all simulated datasets to <mark>preserve the associations</mark> among the following variables.</p>
+<div class="cell" data-hash="sens_cache/html/unnamed-chunk-1_47f47c6e797961b3c09e07ed841c3c0e">
+
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Compare
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is unclear how many proxies (<code>k</code>) should be selected to be included in the propensity score model as there is no clear guideline in the literature.</p>
+</div>
+</div>
+<section id="sensitivity-analysis-for-k" class="level2 page-columns page-full" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="sensitivity-analysis-for-k"><span class="header-section-number">12.1</span> Sensitivity analysis for <code>k</code></h2>
+<section id="create-propensity-score-formula" class="level3 page-columns page-full" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="create-propensity-score-formula"><span class="header-section-number">12.1.1</span> Create propensity score formula</h3>
+<div class="cell" data-hash="sens_cache/html/unnamed-chunk-2_bf7907218c590438978709b1b3130e4e">
+<div class="cell-output-display">
+<p><img src="sens_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p><span class="citation" data-cites="franklin2014plasmode">(<a href="references.html#ref-franklin2014plasmode" role="doc-biblioref">Franklin et al. 2014</a>)</span></p>
-</div></div><section id="variables-used" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="variables-used">Variables used</h2>
-<p><strong>Original demographic variables (9)</strong></p>
-<pre class="{verbatim}"><code>age, sex, education, race, marital status, income, born, cycle </code></pre>
-<p><strong>Original behaviour variables (5)</strong></p>
-<pre class="{verbatim}"><code>smoking, diet, high cholesterol, physical activity, sleep</code></pre>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>Demographic, behaviour and health history / access variables are all binary or categorical variables.</p>
-</div></div><p><strong>Original health history / access variables (2)</strong></p>
-<pre class="{verbatim}"><code>diabetes family history, medical access</code></pre>
-<p><strong>Transformed lab variables (6)</strong> (complex forms)</p>
-<pre class="{verbatim}"><code>Tranfored.var.1 = log(globulin)
-Tranfored.var.2 = protein*calcium
-Tranfored.var.3 = diastolicBP/systolicBP)^2
-Tranfored.var.4 = sqrt(uric acid+bilirubin)/2
-Tranfored.var.5 = phosphorus^2/(sodium*potassium)
-Tranfored.var.6 = log(systolicBP+10)</code></pre>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>Original lab variables were: uric acid, protein, bilirubin, phosphorus, sodium, potassium, globulin, calcium, systolicBP, diastolicBP.</p>
-</div><div class="">
-<p>Tranfored var.1 + var.2 + var.3 + var.4 + var.5 + var.6 were used in the model (transformed lab variables instead of the original lab variables).</p>
-</div></div>
-<p><strong>Count based prescription codes (1)</strong> (proxies of comorbidity)</p>
-<pre class="{verbatim}"><code>Simple count = sum of selected ICD-10 CM codes</code></pre>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><code>Simple count</code> <span class="math inline">\(= \sum_{i}^{94} R_s\)</span> where <span class="math inline">\(R_s\)</span> are the <mark>selected recurrence covariates</mark>.</p>
+<p>Hence we iterate the process (change <code>k</code> parameter in <code>get_prioritised_covariates</code> function in <a href="./step4.html">step 4</a>) and obtain odds ratio (exponentiation of log-OR) for each <code>k</code>. We varied <code>k</code> from 10 to 140.</p>
 </div></div><div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Using only partial list of recurrence covariates
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We proceeded to select only those binary recurrence covariates that had a relative risk (RR) of <mark>less than 0.8 or greater than 1.2</mark> compared to the outcome. Out of 143 recurrence covariates, 94 of them met this criterion. Therefore, 49 remaining covariates were not used in calculating the <code>Simple count</code> variable, and can be considered as noise.</p>
+<p>OR estimates stabilizes around 1.5, shows variability below <code>k</code> = 50 and above 110</p>
 </div>
 </div>
 </section>
-<section id="true-outcome-model" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="true-outcome-model">True outcome model</h2>
-<pre class="{verbatim}"><code>Diabetes (outcome) =  Obese (exposure) + 
-  
-                      demographic/behaviour/health history variables + 
-  
-                      transformed lab variables +
-  
-                      simple count with selected ICD-10 codes</code></pre>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Role of variables
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The outcome model formula dictates the relationship between exposure and each covariate, but observed association between exposure and covariates are retained from the data. It is possible that some of these covariates may not be associated with the exposure, but at least the association with the outcome is guaranteed by the outcome mode. To mimic the original data associations, we also retained the observed associations between the outcome and the covariates.</p>
-</div>
+</section>
+<section id="sensitivity-analysis-for-n" class="level2 page-columns page-full" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="sensitivity-analysis-for-n"><span class="header-section-number">12.2</span> Sensitivity analysis for <code>n</code></h2>
+<div class="cell" data-hash="sens_cache/html/unnamed-chunk-3_82d2bede55042789da7e10dbd40588cb">
+
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -379,34 +427,45 @@ Role of variables
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Simulation setup
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>Size</strong> of each cohort = 3,000</li>
-<li>500 <strong>simulations</strong>/cohort generation</li>
-<li><strong>Outcome</strong> rate = 0.4</li>
-<li><strong>Exposure</strong> prevalence = 0.2</li>
-<li>True exposure <strong>Odds ratio</strong> = 1 or <strong>Risk difference</strong> = 0</li>
-</ul>
-<p>We maintained all covariate coefficients associated with the remaining covariates to be consistent with the original data. Only the association of the ‘simple count’ with the outcome was amplified 5 times. By exaggerating the effect of the ‘simple count’ variable, we aimed to simulate a scenario in which a pronounced and strong unmeasured confounder may exist.</p>
+<p>We varied <code>n</code> from 10 to 120, remaining everything else constant (e.g., <code>k</code> = 100).</p>
 </div>
 </div>
-
-
+<div class="cell" data-hash="sens_cache/html/unnamed-chunk-4_8dfe2664e139ed28be7613cac95aa124">
+<div class="cell-output-display">
+<p><img src="sens_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p><span class="citation" data-cites="pang2016effect karim2018can">(<a href="references.html#ref-pang2016effect" role="doc-biblioref">Pang et al. 2016</a>; <a href="references.html#ref-karim2018can" role="doc-biblioref">Karim, Pang, and Platt 2018</a>)</span></p>
-</div></div><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-franklin2014plasmode" class="csl-entry" role="doc-biblioentry">
-Franklin, Jessica M, Sebastian Schneeweiss, Jennifer M Polinski, and Jeremy A Rassen. 2014. <span>“Plasmode Simulation for the Evaluation of Pharmacoepidemiologic Methods in Complex Healthcare Databases.”</span> <em>Computational Statistics &amp; Data Analysis</em> 72: 219–26.
+<p>Hence we iterate the process (change <code>n</code> parameter in <code>get_candidate_covariates</code> function <a href="./step2.html">step 2</a>) and obtain odds ratio (exponentiation of log-OR) for each <code>n</code>. We varied <code>n</code> from 10 to 120.</p>
+</div></div><div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div id="ref-karim2018can" class="csl-entry" role="doc-biblioentry">
-Karim, Mohammad Ehsanul, Menglan Pang, and Robert W Platt. 2018. <span>“Can We Train Machine Learning Methods to Outperform the High-Dimensional Propensity Score Algorithm?”</span> <em>Epidemiology</em> 29 (2): 191–98.
+<div class="callout-caption-container flex-fill">
+Tip
 </div>
-<div id="ref-pang2016effect" class="csl-entry" role="doc-biblioentry">
-Pang, Menglan, Tibor Schuster, Kristian B Filion, Mireille E Schnitzer, Maria Eberg, and Robert W Platt. 2016. <span>“Effect Estimation in Point-Exposure Studies with Binary Outcomes and High-Dimensional Covariate Data–a Comparison of Targeted Maximum Likelihood Estimation and Inverse Probability of Treatment Weighting.”</span> <em>The International Journal of Biostatistics</em> 12 (2).
+</div>
+<div class="callout-body-container callout-body">
+<p>OR estimates stabilizes around 1.5 for above <code>n</code> = 60.</p>
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Literature suggested that this restriction of <code>n</code> can be detrimental <span class="citation" data-cites="schuster2015role">(<a href="references.html#ref-schuster2015role" role="doc-biblioref">Schuster, Pang, and Platt 2015</a>)</span>. Hence in the original analysis we chose <code>n</code> such that that is larger than available empirical covariates.</p>
+</div></div><div class="cell" data-hash="sens_cache/html/unnamed-chunk-5_6f946db42b6a2d3bef75eabaf76ba68b">
+
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-schuster2015role" class="csl-entry" role="doc-biblioentry">
+Schuster, Tibor, Menglan Pang, and Robert W Platt. 2015. <span>“On the Role of Marginal Confounder Prevalence–Implications for the High-Dimensional Propensity Score Algorithm.”</span> <em>Pharmacoepidemiology and Drug Safety</em> 24 (9): 1004–7.
 </div>
 </div>
 </section>
@@ -547,13 +606,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./dr.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Developments</span></span>
+      <a href="./ps.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Propensity score</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./compare.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Compare</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./extension.html" class="pagination-link">
+        <span class="nav-page-text">Challenges</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

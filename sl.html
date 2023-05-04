@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>hdPS and its machine learning extensions in residual confounding control - 1&nbsp; Data to Analyze</title>
+<title>hdPS and its machine learning extensions in residual confounding control - 16&nbsp; Ensemble</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -49,8 +93,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./proxy.html" rel="next">
-<link href="./motivating.html" rel="prev">
+<link href="./tmle.html" rel="next">
+<link href="./mlhybrid.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -88,8 +132,7 @@ div.csl-indent {
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
-<meta name="twitter:title" content="hdPS and its machine learning extensions in residual confounding control - 1&nbsp; Data to Analyze">
-<meta name="twitter:description" content="To answer the research question “Does obesity increase the risk of developing diabetes?” in the U.S. context, we do the following:">
+<meta name="twitter:title" content="hdPS and its machine learning extensions in residual confounding control - 16&nbsp; Ensemble">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -99,7 +142,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ensemble</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -155,7 +198,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></a>
+  <a href="./data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -260,7 +303,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ensemble</span></a>
+  <a href="./sl.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ensemble</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -349,19 +392,18 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#choose-a-u.s.-data-source" id="toc-choose-a-u.s.-data-source" class="nav-link active" data-scroll-target="#choose-a-u.s.-data-source"><span class="toc-section-number">1.1</span>  Choose a U.S. data source</a></li>
-  <li><a href="#confounder-identification" id="toc-confounder-identification" class="nav-link" data-scroll-target="#confounder-identification"><span class="toc-section-number">1.2</span>  Confounder identification</a></li>
-  <li><a href="#structure-of-the-data" id="toc-structure-of-the-data" class="nav-link" data-scroll-target="#structure-of-the-data"><span class="toc-section-number">1.3</span>  Structure of the data</a></li>
-  <li><a href="#identify-measured-and-unmeasured-variables-in-the-data" id="toc-identify-measured-and-unmeasured-variables-in-the-data" class="nav-link" data-scroll-target="#identify-measured-and-unmeasured-variables-in-the-data"><span class="toc-section-number">1.4</span>  Identify measured and unmeasured variables in the data</a></li>
+  <li><a href="#build-model-formula-based-on-all-variables" id="toc-build-model-formula-based-on-all-variables" class="nav-link active" data-scroll-target="#build-model-formula-based-on-all-variables"><span class="toc-section-number">16.1</span>  Build model formula based on all variables</a></li>
+  <li><a href="#fit-the-ps-model-with-super-learner" id="toc-fit-the-ps-model-with-super-learner" class="nav-link" data-scroll-target="#fit-the-ps-model-with-super-learner"><span class="toc-section-number">16.2</span>  Fit the PS model with super learner</a></li>
+  <li><a href="#obtain-log-or-from-unadjusted-outcome-model" id="toc-obtain-log-or-from-unadjusted-outcome-model" class="nav-link" data-scroll-target="#obtain-log-or-from-unadjusted-outcome-model"><span class="toc-section-number">16.3</span>  Obtain log-OR from unadjusted outcome model</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/edit/main/data.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/edit/main/sl.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ensemble</span></h1>
 </div>
 
 
@@ -376,42 +418,31 @@ div.csl-indent {
 
 </header>
 
-<p>To answer the research question “Does obesity increase the risk of developing diabetes?” in the <mark>U.S. context</mark>, we do the following:</p>
-<section id="choose-a-u.s.-data-source" class="level2 page-columns page-full" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="choose-a-u.s.-data-source"><span class="header-section-number">1.1</span> Choose a U.S. data source</h2>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="images/nhanes.png" style="width:100.0%"></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We show an example using a super learner using 3 candidate learners.</p>
 </div>
 </div>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<ul>
-<li><strong>Data source</strong>: National Health and Nutrition Examination Survey (<a href="https://wwwn.cdc.gov/nchs/nhanes/">NHANES</a>) <span class="citation" data-cites="nhanes">(<a href="references.html#ref-nhanes" role="doc-biblioref">Disease Control and Prevention 2021</a>)</span>
-<ul>
-<li><a href="https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2013">2013-2014</a>,</li>
-<li><a href="https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2015">2015-2016</a>,</li>
-<li><a href="https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2017">2017-2018</a></li>
-</ul></li>
-<li><strong>Availability</strong>: NHANES is a <mark>publicly available</mark> dataset that can be downloaded for free from the CDC website.</li>
-<li><strong>Design</strong>: Observational cross-sectional data. Hence, inferring causality is not a possibility or our objective here.</li>
-</ul>
-</div></div></section>
-<section id="confounder-identification" class="level2 page-columns page-full" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="confounder-identification"><span class="header-section-number">1.2</span> Confounder identification</h2>
-<p><strong>Directed acyclic graph (DAG)</strong></p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><span class="citation" data-cites="greenland1999causal">(<a href="references.html#ref-greenland1999causal" role="doc-biblioref">Greenland, Pearl, and Robins 1999</a>)</span></p>
-</div></div><div style="text-align:center">
-<div class="cell">
+<p>If you want to know more about Super Learner, look at other <a href="https://ehsanx.github.io/TMLEworkshop/g-computation-using-ml.html#g-comp-using-superlearner">tutorials</a>.</p>
+</div></div><div class="cell">
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart TB
-  A[Obesity A] --&gt; Y(Diabetes Y)
-  L[Confounders C] --&gt; Y
-  L --&gt; A
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+  S(Super Learner) --&gt; l(Logistic regression)
+  S --&gt; g(LASSO)
+  S --&gt; m(Multivariate Adaptive Regression Splines MARS)
+  style S fill:#90EE90;
 </pre>
 <div id="mermaid-tooltip-1" class="mermaidTooltip">
 
@@ -420,208 +451,74 @@ div.csl-indent {
 </div>
 </div>
 </div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>The super learning approach is <mark>fundamentally different from the pure ML</mark> or LASSO approach discussed earlier. Here all of the candidate learners are using <mark><code>exposure</code> as their outcome</mark> while running the model.</p>
+</div></div><div class="cell" data-hash="sl_cache/html/unnamed-chunk-2_40b9c8d2141e461ae26fe77df5fa137d">
+
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/DAGbdcomplete0.png" style="width:100.0%" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Hypothesized Directed acyclic graph drawn based on analyst’s best understanding of the literature</figcaption><p></p>
-</figure>
-</div>
-</div>
+<section id="build-model-formula-based-on-all-variables" class="level2 page-columns page-full" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="build-model-formula-based-on-all-variables"><span class="header-section-number">16.1</span> Build model formula based on all variables</h2>
+<div class="cell" data-hash="sl_cache/html/unnamed-chunk-3_c4b983fc4556d69a33cba8ae089d1ddf">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>proxy.list <span class="ot">&lt;-</span> <span class="fu">names</span>(out3<span class="sc">$</span>autoselected_covariate_df[,<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(proxy.list)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 100</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>covform <span class="ot">&lt;-</span> <span class="fu">paste0</span>(investigator.specified.covariates, <span class="at">collapse =</span> <span class="st">"+"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>proxyform <span class="ot">&lt;-</span> <span class="fu">paste0</span>(proxy.list, <span class="at">collapse =</span> <span class="st">"+"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>rhsformula <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">c</span>(covform, proxyform), <span class="at">collapse =</span> <span class="st">"+"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ps.formula <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">"exposure"</span>, <span class="st">"~"</span>, rhsformula))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p><strong>Exposure</strong>: Being obese</p>
-</div><div class="">
-<p><strong>Outcome</strong>: Developing diabetes</p>
-</div><div class="">
-<p><strong>Confounders</strong>: Demographic and lab variables</p>
-</div></div>
-
-</section>
-<section id="structure-of-the-data" class="level2 page-columns page-full" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="structure-of-the-data"><span class="header-section-number">1.3</span> Structure of the data</h2>
-<div style="text-align:center">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart LR
-  D[NHANES 2013-14] --&gt; demo[Demographic \nVariables \nand \nSample \nWeights]
-  demo --&gt; Age
-  demo --&gt; Sex
-  demo --&gt; Education
-  demo --&gt; r[Race or \nethnicity]
-  demo --&gt; m[Marital \nstatus]
-  demo --&gt; Income
-  demo --&gt; b[Birth place]
-  demo --&gt; sf[Survey \nfeatures: \nsampling \nweights, \nstrata, \ncluster]
-  D --&gt; bmi[Body \nMeasures]
-  bmi --&gt; Obesity
-  D --&gt; diq[Diabetes]
-  diq --&gt; Diabetes
-  diq --&gt; f[Family \nhistory of \ndiabetes]
-  D --&gt; smq[Smoking - \nCigarette Use]
-  smq --&gt; Smoking
-  D --&gt; dbq[Diet \nBehavior &amp; \nNutrition]
-  dbq --&gt; Diet
-  D --&gt; paq[Physical \nActivity]
-  paq --&gt; p[Physical \nactivities]
-  D --&gt; huq[Hospital \nUtilization &amp; \nAccess \nto Care]
-  huq --&gt; mm[Medical \naccess]
-  D --&gt; bpx[Blood \nPressure]
-  bpx --&gt; sbp[Systolic \nBlood \nPressure]
-  bpx --&gt; dbp[Diastolic \nBlood \nPressure]
-  D --&gt; bpq[Blood \nPressure &amp; \nCholesterol]
-  bpq --&gt; hc[High \ncholesterol]
-  D --&gt; slq[Sleep \nDisorders]
-  slq --&gt; Sleep
-  D --&gt; biopro[Standard\n Biochemistry \nProfile]
-  biopro --&gt; u[Uric \nacid]
-  biopro --&gt; Protein
-  biopro --&gt; Bilirubin
-  biopro --&gt; Phosphorus
-  biopro --&gt; Sodium
-  biopro --&gt; Potassium
-  biopro --&gt; Globulin
-  biopro --&gt; Calcium
-  D --&gt; rxq[Prescription\n Medications -  \nICD-10-CM \ncodes]
-  style D fill:#FFA500;
-  style rxq fill:#00FF00;
-  style biopro fill:#00FF00;
-  style slq fill:#00FF00;
-  style bpq fill:#00FF00;
-  style bpx fill:#00FF00;
-  style huq fill:#00FF00;
-  style paq fill:#00FF00;
-  style dbq fill:#00FF00;
-  style smq fill:#00FF00;
-  style diq fill:#00FF00;
-  style bmi fill:#00FF00;
-  style demo fill:#00FF00;
-</pre>
-<div id="mermaid-tooltip-2" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</div>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>We do the same for the following cycles:</p>
-<ul>
-<li>NHANES 2015-16</li>
-<li>NHANES 2017-18</li>
-</ul>
+<p>We work with all proxies</p>
 </div></div></section>
-<section id="identify-measured-and-unmeasured-variables-in-the-data" class="level2 page-columns page-full" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="identify-measured-and-unmeasured-variables-in-the-data"><span class="header-section-number">1.4</span> Identify measured and unmeasured variables in the data</h2>
-<p>Find variables capturing the following concepts in the data based on a hypothesized DAG.</p>
-
-<style>
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-
-  tr:nth-child(odd) {
-    background-color: #f2f2f2;
-  }
-
-  tr:nth-child(even) td:nth-child(1),
-  tr:nth-child(even) td:nth-child(2) {
-    background-color: #f2f2f2;
-  }
-  
-  th {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  }
-</style>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Role</th>
-<th>Data Component</th>
-<th>Variables considered based on DAG</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Outcome</td>
-<td><a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/DIQ_J.htm">DIQ</a></td>
-<td><em>Have diabetes</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
-</tr>
-<tr class="even">
-<td>Exposure</td>
-<td><a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/BMX_J.htm">BMX</a></td>
-<td><em>Obese</em>; <a href="https://www.cdc.gov/obesity/basics/adult-defining.html">BMI &gt;= 30</a></td>
-</tr>
-<tr class="odd">
-<td>Confounder</td>
-<td>(<em>demographic</em>) <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/DEMO_J.htm">DEMO</a></td>
-<td>Age, Sex, Education, Race/ethnicity, Marital status, Annual household income, County of birth, Survey cycle year</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>(<em>behaviour</em>) <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SMQ_J.htm">SMQ</a>, <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/PAQ_J.htm">PAQ</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SLQ_J.htm">SLQ</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DBQ_J.htm">DBQ</a></td>
-<td>Smoking<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, Vigorous work activity, Sleep<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, Diet<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>(<em>health history / access</em>) <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/DIQ_J.htm">DIQ</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/HUQ_J.htm">HUQ</a></td>
-<td>Diabetes family history, Access to care<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>(<em>lab</em>) <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/BPX_J.htm">BPX</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/BPQ_J.htm">BPQ</a>, <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/BIOPRO_J.htm">BIOPRO</a></td>
-<td>Blood pressure (systolic, diastolic<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>), Cholesterol, Uric acid, Total Protein, Total Bilirubin, Phosphorus, Sodium, Potassium, Globulin, Total Calcium</td>
-</tr>
-</tbody>
-</table>
-
-
+<section id="fit-the-ps-model-with-super-learner" class="level2 page-columns page-full" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="fit-the-ps-model-with-super-learner"><span class="header-section-number">16.2</span> Fit the PS model with super learner</h2>
+<div class="cell" data-hash="sl_cache/html/unnamed-chunk-4_4d0816ca70e8cfa11828fc017a957636">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(WeightIt)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>W.out <span class="ot">&lt;-</span> <span class="fu">weightit</span>(ps.formula, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> hdps.data, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">estimand =</span> <span class="st">"ATE"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">method =</span> <span class="st">"super"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">SL.library =</span> <span class="fu">c</span>(<span class="st">"SL.glm"</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"SL.glmnet"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"SL.earth"</span>))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required namespace: glmnet</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required namespace: earth</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<ul>
-<li>14 demographic, behavioral, health history related variables
-<ul>
-<li>Mostly <strong>categorical</strong></li>
-</ul></li>
-<li>11 lab variables
-<ul>
-<li>Mostly <strong>continuous</strong></li>
-</ul></li>
-</ul>
-</div></div><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-nhanes" class="csl-entry" role="doc-biblioentry">
-Disease Control, Centers for, and Prevention. 2021. <span>“National Health and Nutrition Examination Survey (NHANES).”</span> <em>National Center for Health Statistics</em>.
+<p>Propensity score model fit based on super learning algorithm to be able to calculate the inverse probability weights.</p>
+</div></div></section>
+<section id="obtain-log-or-from-unadjusted-outcome-model" class="level2 page-columns page-full" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="obtain-log-or-from-unadjusted-outcome-model"><span class="header-section-number">16.3</span> Obtain log-OR from unadjusted outcome model</h2>
+<div class="cell" data-hash="sl_cache/html/unnamed-chunk-5_3684572c9eccdb1882da46055ca8473d">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(W.out<span class="sc">$</span>ps)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.006339 0.250734 0.429954 0.448121 0.628298 0.982153</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>out.formula <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">"outcome"</span>, <span class="st">"~"</span>, <span class="st">"exposure"</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(out.formula,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> hdps.data,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">weights =</span> W.out<span class="sc">$</span>weights,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">family=</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>fit.summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit)<span class="sc">$</span>coef[<span class="st">"exposure"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">c</span>(<span class="st">"Estimate"</span>, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Std. Error"</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Pr(&gt;|z|)"</span>)]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>fit.ci <span class="ot">&lt;-</span> <span class="fu">confint</span>(fit, <span class="at">level =</span> <span class="fl">0.95</span>)[<span class="st">"exposure"</span>, ]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>fit.summary_with_ci.sl <span class="ot">&lt;-</span> <span class="fu">c</span>(fit.summary, fit.ci)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(fit.summary_with_ci.sl,<span class="dv">2</span>) </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Estimate Std. Error   Pr(&gt;|z|)      2.5 %     97.5 % </span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       0.47       0.04       0.00       0.39       0.54</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ref-greenland1999causal" class="csl-entry" role="doc-biblioentry">
-Greenland, Sander, Judea Pearl, and James M Robins. 1999. <span>“Causal Diagrams for Epidemiologic Research.”</span> <em>Epidemiology</em>, 37–48.
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Summary of results (log-OR).</p>
+</div></div><div class="cell" data-hash="sl_cache/html/unnamed-chunk-6_4ee48a95662ccb00bf9395d9b9095a8c">
+
 </div>
-</div>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>combination of (a) Doctor told you have diabetes, (b) Taking insulin now, (c) Take diabetic pills to lower blood sugar.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>cigarette use (at least 100 cigarettes in life)<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Sleep hours/workdays<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>How healthy is the diet<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Routine place to go for healthcare<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>average of 4 measurements<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -760,13 +657,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./motivating.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Motivating example</span>
+      <a href="./mlhybrid.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Hybrid ML</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./proxy.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reducing residual confounding</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tmle.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">TMLE</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

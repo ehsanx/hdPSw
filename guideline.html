@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - 11&nbsp; Compare</title>
+<title>hdPS and its machine learning extensions in residual confounding control - Guideline</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -30,8 +49,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./results.html" rel="next">
-<link href="./plasmode.html" rel="prev">
+<link href="./report.html" rel="next">
+<link href="./mlcompare.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -61,19 +80,22 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
-<meta name="twitter:title" content="Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - 11&nbsp; Compare">
+<meta name="twitter:title" content="hdPS and its machine learning extensions in residual confounding control - Guideline">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar docked slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Compare</span></h1>
+      <h1 class="quarto-secondary-nav-title">Guideline</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -86,26 +108,11 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough</a> 
-        <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/ehsanx/psw" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+      <a href="./">hdPS and its machine learning extensions in residual confounding control</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ehsanx/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Rethinking-Residual-Confounding-Bias-Reduction--Why-Vanilla-hdPS-Alone-is-No-Longer-Enough.pdf">
-            <i class="bi bi-bi-file-pdf pe-1"></i>
-          Download PDF
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Rethinking-Residual-Confounding-Bias-Reduction--Why-Vanilla-hdPS-Alone-is-No-Longer-Enough.epub">
-            <i class="bi bi-bi-journal pe-1"></i>
-          Download ePub
-          </a>
-        </li>
-    </ul>
-    <a href="" title="Share" id="sidebar-tool-dropdown-1" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-1">
         <li>
           <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
             <i class="bi bi-bi-twitter pe-1"></i>
@@ -131,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Abstract</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Background</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -192,11 +199,31 @@ ul.task-list li input[type="checkbox"] {
   <a href="./step5.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Step 5: Covariates</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./step6.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Step 6: Propensity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./step7.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Step 7: Association</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ps.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Propensity score</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sens.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sensitivity</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./extension.html" class="sidebar-item-text sidebar-link">Alternatives</a>
+            <a href="./extension.html" class="sidebar-item-text sidebar-link">Challenges</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -204,19 +231,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pubmed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Literature</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Developments</span></a>
+  <a href="./pubmed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Literature</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./plasmode.html" class="sidebar-item-text sidebar-link">Plasmode Simulation</a>
+            <a href="./mllogic.html" class="sidebar-item-text sidebar-link">Machine learning</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -224,22 +246,42 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./compare.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Compare</span></a>
+  <a href="./mllasso.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Pure ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Results</span></a>
+  <a href="./mlhybrid.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Hybrid ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Refined Results</span></a>
+  <a href="./sl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ensemble</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./takehome.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Take-aways</span></a>
+  <a href="./tmle.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">TMLE</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mlcompare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare results</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./guideline.html" class="sidebar-item-text sidebar-link active">Guideline</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./report.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reporting</span></a>
   </div>
 </li>
       </ul>
@@ -249,19 +291,70 @@ ul.task-list li input[type="checkbox"] {
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./NHANES.html" class="sidebar-item-text sidebar-link">Appendix: NHANES</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index13.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Download cycle 8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index15.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Download cycle 9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Download cycle 10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic13.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Recoding cycle 8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic15.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Recoding cycle 9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Recoding cycle 10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./merge13to17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Merge three cycles</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#reviews-and-guidelines" id="toc-reviews-and-guidelines" class="nav-link active" data-scroll-target="#reviews-and-guidelines">Reviews and Guidelines</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/edit/main/guideline.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Compare</span></h1>
+<h1 class="title d-none d-lg-block">Guideline</h1>
 </div>
 
 
@@ -276,43 +369,51 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="reviews-and-guidelines" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="reviews-and-guidelines">Reviews and Guidelines</h2>
+<div style="text-align:center">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+  r[Reviews] --&gt; p1(Wyss et al. 2022 \nPharmacoepidemiol Drug Saf.)
+  r --&gt; p0(Schneeweiss et al. 2018 \nClin Epidemiol.)
+  g[Guideline] --&gt; p2(Rassen et al. 2022 \nPharmacoepidemiol Drug Saf.)
+  g --&gt; p3(Tazare et al. 2022 \nPharmacoepidemiol Drug Saf.)
+  style p0 fill:#f44,stroke-width:2px,stroke:#f00,color:#fff;
+  style p1 fill:#f44,stroke-width:2px,stroke:#f00,color:#fff;
+  style p2 fill:#b03,stroke-width:2px,stroke:#600,color:#fff;
+  style p3 fill:#b03,stroke-width:2px,stroke:#600,color:#fff;
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
 </div>
-<div class="callout-caption-container flex-fill">
-Three broad class of methods
+<p></p>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>All weighted propensity score versions.</p>
-<ol type="1">
-<li><strong>No super learner</strong> used</li>
-</ol>
-<ul>
-<li>Only investigator specified variables (no proxies)</li>
-<li>Kitchen sink (no variable selection)</li>
-<li>hdPS</li>
-<li>LASSO (recurrent variables being associated with the outcome), or</li>
-<li>hybrid (first hdPS, and then LASSO)</li>
-</ul>
-<ol start="2" type="1">
-<li><strong>Super learner</strong> versions of the above</li>
-</ol>
-<ul>
-<li>2 set of super learner used (3 learners vs 4)</li>
-</ul>
-<ol start="3" type="1">
-<li><strong>TMLE</strong> versions of the above</li>
-</ol>
-<ul>
-<li>Also includes a <strong>double cross-fit</strong> version (very time consuming)</li>
-</ul>
 </div>
 </div>
 
 
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="citation" data-cites="wyss2022machine rassen2023high tazare2022transparency schneeweiss2018automated">(<a href="references.html#ref-wyss2022machine" role="doc-biblioref">Wyss et al. 2022</a>; <a href="references.html#ref-rassen2023high" role="doc-biblioref">Rassen et al. 2023</a>; <a href="references.html#ref-tazare2022transparency" role="doc-biblioref">Tazare et al. 2022</a>; <a href="references.html#ref-schneeweiss2018automated" role="doc-biblioref">Schneeweiss 2018</a>)</span></p>
+</div></div><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-rassen2023high" class="csl-entry" role="doc-biblioentry">
+Rassen, Jeremy A, Patrick Blin, Sebastian Kloss, Romain S Neugebauer, Robert W Platt, Anton Pottegård, Sebastian Schneeweiss, and Sengwee Toh. 2023. <span>“High-Dimensional Propensity Scores for Empirical Covariate Selection in Secondary Database Studies: Planning, Implementation, and Reporting.”</span> <em>Pharmacoepidemiology and Drug Safety</em> 32 (2): 93–106.
+</div>
+<div id="ref-schneeweiss2018automated" class="csl-entry" role="doc-biblioentry">
+Schneeweiss, Sebastian. 2018. <span>“Automated Data-Adaptive Analytics for Electronic Healthcare Data to Study Causal Treatment Effects.”</span> <em>Clinical Epidemiology</em>, 771–88.
+</div>
+<div id="ref-tazare2022transparency" class="csl-entry" role="doc-biblioentry">
+Tazare, John, Richard Wyss, Jessica M Franklin, Liam Smeeth, Stephen JW Evans, Shirley V Wang, Sebastian Schneeweiss, Ian J Douglas, Joshua J Gagne, and Elizabeth J Williamson. 2022. <span>“Transparency of High-Dimensional Propensity Score Analyses: Guidance for Diagnostics and Reporting.”</span> <em>Pharmacoepidemiology and Drug Safety</em> 31 (4): 411–23.
+</div>
+<div id="ref-wyss2022machine" class="csl-entry" role="doc-biblioentry">
+Wyss, Richard, Chen Yanover, Tal El-Hay, Dimitri Bennett, Robert W Platt, Andrew R Zullo, Grammati Sari, et al. 2022. <span>“Machine Learning for Improving High-Dimensional Proxy Confounder Adjustment in Healthcare Database Studies: An Overview of the Current Literature.”</span> <em>Pharmacoepidemiology and Drug Safety</em> 31 (9): 932–43.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -450,13 +551,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./plasmode.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Plasmode Simulation</span>
+      <a href="./mlcompare.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare results</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./results.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Results</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./report.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reporting</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - 10&nbsp; Developments</title>
+<title>hdPS and its machine learning extensions in residual confounding control - Appendix: NHANES</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 
@@ -49,8 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./plasmode.html" rel="next">
-<link href="./pubmed.html" rel="prev">
+<link href="./index13.html" rel="next">
+<link href="./references.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -81,22 +62,19 @@ div.csl-indent {
   }
 }</script>
 
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
-
-<meta name="twitter:title" content="Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough - 10&nbsp; Developments">
-<meta name="twitter:description" content="Causal inference literature, following developments are gaining popularity:">
+<meta name="twitter:title" content="hdPS and its machine learning extensions in residual confounding control - Appendix: NHANES">
+<meta name="twitter:description" content="The National Health and Nutrition Examination Survey (NHANES) is a cross-sectional survey that is designed to provide nationally representative data on the health and nutritional status of the…">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked slimcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Developments</span></h1>
+      <h1 class="quarto-secondary-nav-title">Appendix: NHANES</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -109,26 +87,11 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone is No Longer Enough</a> 
-        <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/ehsanx/psw" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+      <a href="./">hdPS and its machine learning extensions in residual confounding control</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ehsanx/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Rethinking-Residual-Confounding-Bias-Reduction--Why-Vanilla-hdPS-Alone-is-No-Longer-Enough.pdf">
-            <i class="bi bi-bi-file-pdf pe-1"></i>
-          Download PDF
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Rethinking-Residual-Confounding-Bias-Reduction--Why-Vanilla-hdPS-Alone-is-No-Longer-Enough.epub">
-            <i class="bi bi-bi-journal pe-1"></i>
-          Download ePub
-          </a>
-        </li>
-    </ul>
-    <a href="" title="Share" id="sidebar-tool-dropdown-1" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-1">
         <li>
           <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
             <i class="bi bi-bi-twitter pe-1"></i>
@@ -154,7 +117,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Abstract</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Background</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -215,11 +178,31 @@ div.csl-indent {
   <a href="./step5.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Step 5: Covariates</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./step6.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Step 6: Propensity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./step7.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Step 7: Association</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ps.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Propensity score</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sens.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sensitivity</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./extension.html" class="sidebar-item-text sidebar-link">Alternatives</a>
+            <a href="./extension.html" class="sidebar-item-text sidebar-link">Challenges</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -227,19 +210,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pubmed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Literature</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Developments</span></a>
+  <a href="./pubmed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Literature</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./plasmode.html" class="sidebar-item-text sidebar-link">Plasmode Simulation</a>
+            <a href="./mllogic.html" class="sidebar-item-text sidebar-link">Machine learning</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -247,22 +225,42 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Compare</span></a>
+  <a href="./mllasso.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Pure ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Results</span></a>
+  <a href="./mlhybrid.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Hybrid ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Refined Results</span></a>
+  <a href="./sl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ensemble</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./takehome.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Take-aways</span></a>
+  <a href="./tmle.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">TMLE</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mlcompare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare results</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./guideline.html" class="sidebar-item-text sidebar-link">Guideline</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./report.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reporting</span></a>
   </div>
 </li>
       </ul>
@@ -272,6 +270,51 @@ div.csl-indent {
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./NHANES.html" class="sidebar-item-text sidebar-link active">Appendix: NHANES</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index13.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Download cycle 8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index15.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Download cycle 9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Download cycle 10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic13.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Recoding cycle 8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic15.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Recoding cycle 9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analytic17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Recoding cycle 10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./merge13to17.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Merge three cycles</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -281,20 +324,20 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#tmle" id="toc-tmle" class="nav-link active" data-scroll-target="#tmle"><span class="toc-section-number">10.1</span>  TMLE</a></li>
-  <li><a href="#super-learner" id="toc-super-learner" class="nav-link" data-scroll-target="#super-learner"><span class="toc-section-number">10.2</span>  Super learner</a></li>
-  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation"><span class="toc-section-number">10.3</span>  Cross-validation</a></li>
-  <li><a href="#super-learner-guideline" id="toc-super-learner-guideline" class="nav-link" data-scroll-target="#super-learner-guideline"><span class="toc-section-number">10.4</span>  Super learner guideline</a></li>
-  <li><a href="#cross-fitting-and-double-robust" id="toc-cross-fitting-and-double-robust" class="nav-link" data-scroll-target="#cross-fitting-and-double-robust"><span class="toc-section-number">10.5</span>  Cross-fitting and double robust</a></li>
+  <li><a href="#nhanes" id="toc-nhanes" class="nav-link active" data-scroll-target="#nhanes">NHANES</a></li>
+  <li><a href="#components" id="toc-components" class="nav-link" data-scroll-target="#components">Components</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
+  <li><a href="#usefulness" id="toc-usefulness" class="nav-link" data-scroll-target="#usefulness">Usefulness</a></li>
+  <li><a href="#cylces-we-used" id="toc-cylces-we-used" class="nav-link" data-scroll-target="#cylces-we-used">Cylces we used</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/psw/edit/main/dr.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/edit/main/NHANES.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Developments</span></h1>
+<h1 class="title d-none d-lg-block">Appendix: NHANES</h1>
 </div>
 
 
@@ -309,121 +352,27 @@ div.csl-indent {
 
 </header>
 
-<p>Causal inference literature, following developments are gaining popularity:</p>
-<section id="tmle" class="level2 page-columns page-full" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="tmle"><span class="header-section-number">10.1</span> TMLE</h2>
-<ul>
-<li>Pang et al.&nbsp;2016 Epidemiology</li>
-<li>Pang et al.&nbsp;2016 Int. J Biostat.</li>
-<li>Ju et al.&nbsp;2019 Stat Meth Med Res.</li>
-</ul>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<ul>
-<li>Parametric versions implemented</li>
-<li>Super learner could be very time consuming</li>
-</ul>
-<p><span class="citation" data-cites="pang2016targeted pang2016effect ju2019scalable">(<a href="references.html#ref-pang2016targeted" role="doc-biblioref">Pang, Schuster, Filion, Eberg, et al. 2016</a>; <a href="references.html#ref-pang2016effect" role="doc-biblioref">Pang, Schuster, Filion, Schnitzer, et al. 2016</a>; <a href="references.html#ref-ju2019scalable" role="doc-biblioref">Ju, Gruber, et al. 2019</a>)</span></p>
-</div></div></section>
-<section id="super-learner" class="level2 page-columns page-full" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="super-learner"><span class="header-section-number">10.2</span> Super learner</h2>
-<ul>
-<li>Wyss et al.&nbsp;2018 Epidemiology</li>
-<li>Ju et al.&nbsp;2019 J App Stat.</li>
-</ul>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<ul>
-<li>Parametric versions implemented, or</li>
-<li>Bias not used as a performance measure</li>
-</ul>
-<p><span class="citation" data-cites="ju2019propensity wyss2018using">(<a href="references.html#ref-ju2019propensity" role="doc-biblioref">Ju, Combs, et al. 2019</a>; <a href="references.html#ref-wyss2018using" role="doc-biblioref">Wyss et al. 2018</a>)</span></p>
-</div></div></section>
-<section id="cross-validation" class="level2 page-columns page-full" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="cross-validation"><span class="header-section-number">10.3</span> Cross-validation</h2>
-<ul>
-<li><a href="https://doi.org/10.1093/aje/kwab201">Naimi et al.&nbsp;(2021) Am J Epidemiol.</a>
-<ul>
-<li>TMLE not performing as well</li>
-</ul></li>
-<li><a href="https://doi.org/10.1093/aje/kwab200">Balzer Westling (2021) Am J Epidemiol.</a></li>
-</ul>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><span class="citation" data-cites="naimi2017challenges balzer2021demystifying">(<a href="references.html#ref-naimi2017challenges" role="doc-biblioref">Naimi, Mishler, and Kennedy 2021</a>; <a href="references.html#ref-balzer2021demystifying" role="doc-biblioref">Balzer and Westling 2021</a>)</span></p>
-</div></div></section>
-<section id="super-learner-guideline" class="level2 page-columns page-full" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="super-learner-guideline"><span class="header-section-number">10.4</span> Super learner guideline</h2>
-<ul>
-<li><a href="https://doi.org/10.1093/ije/dyad023">Phillips et al.&nbsp;2023 Int J Epidemiol.</a></li>
-</ul>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><span class="citation" data-cites="Phillips2021">(<a href="references.html#ref-Phillips2021" role="doc-biblioref">Phillips et al. 2023</a>)</span></p>
-</div></div></section>
-<section id="cross-fitting-and-double-robust" class="level2 page-columns page-full" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="cross-fitting-and-double-robust"><span class="header-section-number">10.5</span> Cross-fitting and double robust</h2>
-<p><a href="https://pubmed.ncbi.nlm.nih.gov/33591058/">Zivich and Breskin (2021)</a>: Cross-fitting + together with double robust approaches in low-dimensional setting</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><span class="citation" data-cites="zivich2021machine">(<a href="references.html#ref-zivich2021machine" role="doc-biblioref">Zivich and Breskin 2021</a>)</span></p>
-</div></div><div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/cf.png" class="img-fluid figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We want to assess the performance in the <mark>high-dimensional setting</mark> when</p>
-<ul>
-<li>many proxies (some irrelevant) are available.</li>
-<li>complex structure is present.</li>
-</ul>
-</div>
-</div>
+<section id="nhanes" class="level2">
+<h2 class="anchored" data-anchor-id="nhanes">NHANES</h2>
+<p>The National Health and Nutrition Examination Survey (<a href="https://www.cdc.gov/nchs/nhanes/index.htm">NHANES</a>) is a cross-sectional survey that is designed to provide nationally representative data on the health and nutritional status of the non-institutionalized, civilian US population. This survey is conducted by the National Center for Health Statistics, that provides valuable data on a wide range of health issues, such as diabetes, obesity, as well as nutrition, physical activity, and environmental exposures.</p>
+</section>
+<section id="components" class="level2">
+<h2 class="anchored" data-anchor-id="components">Components</h2>
+<p>NHANES combines interviews, physical examinations, and laboratory tests to gather comprehensive health and nutrition information about participants.</p>
+</section>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
+<p>The survey selects participants using a <a href="https://wwwn.cdc.gov/nchs/nhanes/tutorials/SampleDesign.aspx">complex sampling design</a>, which allows researchers to make inferences about the overall health of the US population. The survey uses a complex, multistage probability sampling design to select participants from US households.</p>
+</section>
+<section id="usefulness" class="level2">
+<h2 class="anchored" data-anchor-id="usefulness">Usefulness</h2>
+<p>The collected data is used by many researchers, policymakers, and public health officials to identify emerging health issues, monitor trends in health and inform public health policies and initiatives to improve health-related outcomes in the US.</p>
+</section>
+<section id="cylces-we-used" class="level2">
+<h2 class="anchored" data-anchor-id="cylces-we-used">Cylces we used</h2>
+<p>NHANES is an ongoing annual survey, continuous NHANES cycles started from 1999-2000 (cycle 1; see <code>SDDSRVYR</code> variable in the <a href="https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/DEMO.htm">Demographic Variables &amp; Sample Weights</a> component). NHANES cycles 8, 9, and 10 (that we used in this tutorial) refer to the 8th, 9th, and 10th rounds of surveys, which took place from 2013-2014, 2015-2016, and 2017-2018, respectively. Each cycle involves a nationally representative sample of the US population.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-balzer2021demystifying" class="csl-entry" role="doc-biblioentry">
-Balzer, Laura B, and Ted Westling. 2021. <span>“Demystifying Statistical Inference When Using Machine Learning in Causal Research.”</span> <em>American Journal of Epidemiology</em>. <a href="https://doi.org/10.1093/aje/kwab200">https://doi.org/10.1093/aje/kwab200</a>.
-</div>
-<div id="ref-ju2019propensity" class="csl-entry" role="doc-biblioentry">
-Ju, Cheng, Mary Combs, Samuel D Lendle, Jessica M Franklin, Richard Wyss, Sebastian Schneeweiss, and Mark J van der Laan. 2019. <span>“Propensity Score Prediction for Electronic Healthcare Databases Using Super Learner and High-Dimensional Propensity Score Methods.”</span> <em>Journal of Applied Statistics</em> 46 (12): 2216–36.
-</div>
-<div id="ref-ju2019scalable" class="csl-entry" role="doc-biblioentry">
-Ju, Cheng, Susan Gruber, Samuel D Lendle, Antoine Chambaz, Jessica M Franklin, Richard Wyss, Sebastian Schneeweiss, and Mark J van Der Laan. 2019. <span>“Scalable Collaborative Targeted Learning for High-Dimensional Data.”</span> <em>Statistical Methods in Medical Research</em> 28 (2): 532–54.
-</div>
-<div id="ref-naimi2017challenges" class="csl-entry" role="doc-biblioentry">
-Naimi, Ashley I, Alan E Mishler, and Edward H Kennedy. 2021. <span>“Challenges in Obtaining Valid Causal Effect Estimates with Machine Learning Algorithms.”</span> <em>American Journal of Epidemiology</em>. <a href="https://doi.org/10.1093/aje/kwab201">https://doi.org/10.1093/aje/kwab201</a>.
-</div>
-<div id="ref-pang2016targeted" class="csl-entry" role="doc-biblioentry">
-Pang, Menglan, Tibor Schuster, Kristian B Filion, Maria Eberg, and Robert W Platt. 2016. <span>“Targeted Maximum Likelihood Estimation for Pharmacoepidemiologic Research.”</span> <em>Epidemiology (Cambridge, Mass.)</em> 27 (4): 570.
-</div>
-<div id="ref-pang2016effect" class="csl-entry" role="doc-biblioentry">
-Pang, Menglan, Tibor Schuster, Kristian B Filion, Mireille E Schnitzer, Maria Eberg, and Robert W Platt. 2016. <span>“Effect Estimation in Point-Exposure Studies with Binary Outcomes and High-Dimensional Covariate Data–a Comparison of Targeted Maximum Likelihood Estimation and Inverse Probability of Treatment Weighting.”</span> <em>The International Journal of Biostatistics</em> 12 (2).
-</div>
-<div id="ref-Phillips2021" class="csl-entry" role="doc-biblioentry">
-Phillips, Rachael V, Mark J van der Laan, Hana Lee, and Susan Gruber. 2023. <span>“Practical Considerations for Specifying a Super Learner.”</span> <em>International Journal of Epidemiology</em>. <a href="https://doi.org/10.1093/ije/dyad023">https://doi.org/10.1093/ije/dyad023</a>.
-</div>
-<div id="ref-wyss2018using" class="csl-entry" role="doc-biblioentry">
-Wyss, Richard, Sebastian Schneeweiss, Mark Van Der Laan, Samuel D Lendle, Cheng Ju, and Jessica M Franklin. 2018. <span>“Using Super Learner Prediction Modeling to Improve High-Dimensional Propensity Score Estimation.”</span> <em>Epidemiology</em> 29 (1): 96–106.
-</div>
-<div id="ref-zivich2021machine" class="csl-entry" role="doc-biblioentry">
-Zivich, Paul N, and Alexander Breskin. 2021. <span>“Machine Learning for Causal Inference: On the Use of Cross-Fit Estimators.”</span> <em>Epidemiology (Cambridge, Mass.)</em> 32 (3): 393.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -562,13 +511,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./pubmed.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Literature</span></span>
+      <a href="./references.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">References</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./plasmode.html" class="pagination-link">
-        <span class="nav-page-text">Plasmode Simulation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./index13.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Download cycle 8</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

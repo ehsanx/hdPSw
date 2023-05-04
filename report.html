@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>hdPS and its machine learning extensions in residual confounding control - 1&nbsp; Data to Analyze</title>
+<title>hdPS and its machine learning extensions in residual confounding control - 19&nbsp; Reporting</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -49,8 +49,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./proxy.html" rel="next">
-<link href="./motivating.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./guideline.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -80,16 +80,10 @@ div.csl-indent {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
-
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
-<meta name="twitter:title" content="hdPS and its machine learning extensions in residual confounding control - 1&nbsp; Data to Analyze">
-<meta name="twitter:description" content="To answer the research question “Does obesity increase the risk of developing diabetes?” in the U.S. context, we do the following:">
+<meta name="twitter:title" content="hdPS and its machine learning extensions in residual confounding control - 19&nbsp; Reporting">
+<meta name="twitter:description" content="Many reporting guideline already exists about what to report in a propensity score analysis. Most of the reporting guideline should be applicable in the hdPS context as well.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -99,7 +93,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reporting</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -155,7 +149,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></a>
+  <a href="./data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -285,7 +279,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./report.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reporting</span></a>
+  <a href="./report.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reporting</span></a>
   </div>
 </li>
       </ul>
@@ -349,19 +343,19 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#choose-a-u.s.-data-source" id="toc-choose-a-u.s.-data-source" class="nav-link active" data-scroll-target="#choose-a-u.s.-data-source"><span class="toc-section-number">1.1</span>  Choose a U.S. data source</a></li>
-  <li><a href="#confounder-identification" id="toc-confounder-identification" class="nav-link" data-scroll-target="#confounder-identification"><span class="toc-section-number">1.2</span>  Confounder identification</a></li>
-  <li><a href="#structure-of-the-data" id="toc-structure-of-the-data" class="nav-link" data-scroll-target="#structure-of-the-data"><span class="toc-section-number">1.3</span>  Structure of the data</a></li>
-  <li><a href="#identify-measured-and-unmeasured-variables-in-the-data" id="toc-identify-measured-and-unmeasured-variables-in-the-data" class="nav-link" data-scroll-target="#identify-measured-and-unmeasured-variables-in-the-data"><span class="toc-section-number">1.4</span>  Identify measured and unmeasured variables in the data</a></li>
+  <li><a href="#analysis-information" id="toc-analysis-information" class="nav-link active" data-scroll-target="#analysis-information"><span class="toc-section-number">19.1</span>  Analysis Information</a></li>
+  <li><a href="#information-about-hdps" id="toc-information-about-hdps" class="nav-link" data-scroll-target="#information-about-hdps"><span class="toc-section-number">19.2</span>  Information about hdPS</a></li>
+  <li><a href="#diagnostics" id="toc-diagnostics" class="nav-link" data-scroll-target="#diagnostics"><span class="toc-section-number">19.3</span>  Diagnostics</a></li>
+  <li><a href="#sensitivity-analysis" id="toc-sensitivity-analysis" class="nav-link" data-scroll-target="#sensitivity-analysis"><span class="toc-section-number">19.4</span>  Sensitivity analysis</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/edit/main/data.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/edit/main/report.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data to Analyze</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reporting</span></h1>
 </div>
 
 
@@ -376,151 +370,15 @@ div.csl-indent {
 
 </header>
 
-<p>To answer the research question “Does obesity increase the risk of developing diabetes?” in the <mark>U.S. context</mark>, we do the following:</p>
-<section id="choose-a-u.s.-data-source" class="level2 page-columns page-full" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="choose-a-u.s.-data-source"><span class="header-section-number">1.1</span> Choose a U.S. data source</h2>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="images/nhanes.png" style="width:100.0%"></p>
-</div>
-</div>
+<section id="analysis-information" class="level2 page-columns page-full" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="analysis-information"><span class="header-section-number">19.1</span> Analysis Information</h2>
+<p>Many reporting guideline already exists about what to report in a propensity score analysis. Most of the reporting guideline should be applicable in the hdPS context as well. On top of those, we also need to consider reporting the following information about hdPS for transparency.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<ul>
-<li><strong>Data source</strong>: National Health and Nutrition Examination Survey (<a href="https://wwwn.cdc.gov/nchs/nhanes/">NHANES</a>) <span class="citation" data-cites="nhanes">(<a href="references.html#ref-nhanes" role="doc-biblioref">Disease Control and Prevention 2021</a>)</span>
-<ul>
-<li><a href="https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2013">2013-2014</a>,</li>
-<li><a href="https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2015">2015-2016</a>,</li>
-<li><a href="https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2017">2017-2018</a></li>
-</ul></li>
-<li><strong>Availability</strong>: NHANES is a <mark>publicly available</mark> dataset that can be downloaded for free from the CDC website.</li>
-<li><strong>Design</strong>: Observational cross-sectional data. Hence, inferring causality is not a possibility or our objective here.</li>
-</ul>
+<p><span class="citation" data-cites="karim2022use simoneau2022recommendations">(<a href="references.html#ref-karim2022use" role="doc-biblioref">Karim et al. 2022</a>; <a href="references.html#ref-simoneau2022recommendations" role="doc-biblioref">Simoneau et al. 2022</a>)</span></p>
 </div></div></section>
-<section id="confounder-identification" class="level2 page-columns page-full" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="confounder-identification"><span class="header-section-number">1.2</span> Confounder identification</h2>
-<p><strong>Directed acyclic graph (DAG)</strong></p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><span class="citation" data-cites="greenland1999causal">(<a href="references.html#ref-greenland1999causal" role="doc-biblioref">Greenland, Pearl, and Robins 1999</a>)</span></p>
-</div></div><div style="text-align:center">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart TB
-  A[Obesity A] --&gt; Y(Diabetes Y)
-  L[Confounders C] --&gt; Y
-  L --&gt; A
-</pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/DAGbdcomplete0.png" style="width:100.0%" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Hypothesized Directed acyclic graph drawn based on analyst’s best understanding of the literature</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><strong>Exposure</strong>: Being obese</p>
-</div><div class="">
-<p><strong>Outcome</strong>: Developing diabetes</p>
-</div><div class="">
-<p><strong>Confounders</strong>: Demographic and lab variables</p>
-</div></div>
-
-</section>
-<section id="structure-of-the-data" class="level2 page-columns page-full" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="structure-of-the-data"><span class="header-section-number">1.3</span> Structure of the data</h2>
-<div style="text-align:center">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart LR
-  D[NHANES 2013-14] --&gt; demo[Demographic \nVariables \nand \nSample \nWeights]
-  demo --&gt; Age
-  demo --&gt; Sex
-  demo --&gt; Education
-  demo --&gt; r[Race or \nethnicity]
-  demo --&gt; m[Marital \nstatus]
-  demo --&gt; Income
-  demo --&gt; b[Birth place]
-  demo --&gt; sf[Survey \nfeatures: \nsampling \nweights, \nstrata, \ncluster]
-  D --&gt; bmi[Body \nMeasures]
-  bmi --&gt; Obesity
-  D --&gt; diq[Diabetes]
-  diq --&gt; Diabetes
-  diq --&gt; f[Family \nhistory of \ndiabetes]
-  D --&gt; smq[Smoking - \nCigarette Use]
-  smq --&gt; Smoking
-  D --&gt; dbq[Diet \nBehavior &amp; \nNutrition]
-  dbq --&gt; Diet
-  D --&gt; paq[Physical \nActivity]
-  paq --&gt; p[Physical \nactivities]
-  D --&gt; huq[Hospital \nUtilization &amp; \nAccess \nto Care]
-  huq --&gt; mm[Medical \naccess]
-  D --&gt; bpx[Blood \nPressure]
-  bpx --&gt; sbp[Systolic \nBlood \nPressure]
-  bpx --&gt; dbp[Diastolic \nBlood \nPressure]
-  D --&gt; bpq[Blood \nPressure &amp; \nCholesterol]
-  bpq --&gt; hc[High \ncholesterol]
-  D --&gt; slq[Sleep \nDisorders]
-  slq --&gt; Sleep
-  D --&gt; biopro[Standard\n Biochemistry \nProfile]
-  biopro --&gt; u[Uric \nacid]
-  biopro --&gt; Protein
-  biopro --&gt; Bilirubin
-  biopro --&gt; Phosphorus
-  biopro --&gt; Sodium
-  biopro --&gt; Potassium
-  biopro --&gt; Globulin
-  biopro --&gt; Calcium
-  D --&gt; rxq[Prescription\n Medications -  \nICD-10-CM \ncodes]
-  style D fill:#FFA500;
-  style rxq fill:#00FF00;
-  style biopro fill:#00FF00;
-  style slq fill:#00FF00;
-  style bpq fill:#00FF00;
-  style bpx fill:#00FF00;
-  style huq fill:#00FF00;
-  style paq fill:#00FF00;
-  style dbq fill:#00FF00;
-  style smq fill:#00FF00;
-  style diq fill:#00FF00;
-  style bmi fill:#00FF00;
-  style demo fill:#00FF00;
-</pre>
-<div id="mermaid-tooltip-2" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</div>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>We do the same for the following cycles:</p>
-<ul>
-<li>NHANES 2015-16</li>
-<li>NHANES 2017-18</li>
-</ul>
-</div></div></section>
-<section id="identify-measured-and-unmeasured-variables-in-the-data" class="level2 page-columns page-full" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="identify-measured-and-unmeasured-variables-in-the-data"><span class="header-section-number">1.4</span> Identify measured and unmeasured variables in the data</h2>
-<p>Find variables capturing the following concepts in the data based on a hypothesized DAG.</p>
+<section id="information-about-hdps" class="level2 page-columns page-full" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="information-about-hdps"><span class="header-section-number">19.2</span> Information about hdPS</h2>
 
 <style>
   table {
@@ -538,8 +396,7 @@ div.csl-indent {
     background-color: #f2f2f2;
   }
 
-  tr:nth-child(even) td:nth-child(1),
-  tr:nth-child(even) td:nth-child(2) {
+  tr:nth-child(even) td:nth-child(1){
     background-color: #f2f2f2;
   }
   
@@ -551,77 +408,131 @@ div.csl-indent {
 <table class="table">
 <thead>
 <tr class="header">
-<th>Role</th>
-<th>Data Component</th>
-<th>Variables considered based on DAG</th>
+<th>Information</th>
+<th>Description</th>
+<th>Our example</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Outcome</td>
-<td><a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/DIQ_J.htm">DIQ</a></td>
-<td><em>Have diabetes</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
+<td>Proxy data dimensions</td>
+<td>The number of data dimensions (p) used.</td>
+<td><a href="./step1.html">p = 1</a> as only one proxy data dimension (dx) was available from medication usage</td>
 </tr>
 <tr class="even">
-<td>Exposure</td>
-<td><a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/BMX_J.htm">BMX</a></td>
-<td><em>Obese</em>; <a href="https://www.cdc.gov/obesity/basics/adult-defining.html">BMI &gt;= 30</a></td>
+<td>What was done to remove proxies that are problematic</td>
+<td>Usually proxies of outcome, exposure as well as those identified as IV or mediator or collider are discarded.</td>
+<td><a href="./step1.html">obesity and diabetes</a> related codes removed</td>
 </tr>
 <tr class="odd">
-<td>Confounder</td>
-<td>(<em>demographic</em>) <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/DEMO_J.htm">DEMO</a></td>
-<td>Age, Sex, Education, Race/ethnicity, Marital status, Annual household income, County of birth, Survey cycle year</td>
+<td>Proxy feature parameters</td>
+<td>The parameters used to select proxy features, including granularity [g], prevalence filter [n], and the minimum number of patients [m]</td>
+<td><a href="./step2.html">g = 3, n = 200, m = 20</a>. This resulted in 126 empirical covariates.</td>
+</tr>
+<tr class="even">
+<td>Recurrence parameters</td>
+<td>How many recurrence variables per code [r] and the covariate assessment period [CAP]</td>
+<td><a href="./step3.html">r = 3</a>, CAP = 30 days. This resulted in 143 distinct recurrence covariates.</td>
+</tr>
+<tr class="odd">
+<td>Prioritization process</td>
+<td>The process used to prioritize proxy features, such as machine learning (ML), Bross, or hybrid methods</td>
+<td>We used all of these, but used <a href="./step4.html">Bross formula for hdPS</a> to calculate absolute log of the multiplicative bias, and then ranked based on magnitude to select / prioritize recurrence covariates.</td>
+</tr>
+<tr class="even">
+<td>Selected proxies</td>
+<td>The number of proxies selected (k) for the model</td>
+<td><a href="./step5.html">k = 100</a> for the hdPS</td>
+</tr>
+<tr class="odd">
+<td>Software</td>
+<td>The software used to perform the analysis</td>
+<td>R: <a href="./step1.html">autoCovariateSelection</a> package</td>
+</tr>
+</tbody>
+</table>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="citation" data-cites="rassen2023high tazare2022transparency">(<a href="references.html#ref-rassen2023high" role="doc-biblioref">Rassen et al. 2023</a>; <a href="references.html#ref-tazare2022transparency" role="doc-biblioref">Tazare et al. 2022</a>)</span></p>
+</div></div></section>
+<section id="diagnostics" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="diagnostics"><span class="header-section-number">19.3</span> Diagnostics</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Information</th>
+<th>Description</th>
+<th>Our example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Diagnostics used to assess the model</td>
+<td>Standardized mean differences (SMD)</td>
+<td><a href="./step6.html">Within 0.1</a> in hdPS analysis</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(<em>behaviour</em>) <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SMQ_J.htm">SMQ</a>, <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/PAQ_J.htm">PAQ</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SLQ_J.htm">SLQ</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DBQ_J.htm">DBQ</a></td>
-<td>Smoking<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, Vigorous work activity, Sleep<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, Diet<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
+<td>Weight (IPW) summary assessment</td>
+<td>Somewhat reasonable (<a href="./step6.html">maximum</a> approximately 54) within hdPS analysis</td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>(<em>health history / access</em>) <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/DIQ_J.htm">DIQ</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/HUQ_J.htm">HUQ</a></td>
-<td>Diabetes family history, Access to care<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></td>
+<td>Comparison of propensity score distributions between each exposure group</td>
+<td><a href="./step6.html">Overlapping (common support)</a> does not seem to be an issue.</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(<em>lab</em>) <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/BPX_J.htm">BPX</a>, <a href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/BPQ_J.htm">BPQ</a>, <a href="https://wwwn.cdc.gov/nchs/nhanes/2017-2018/BIOPRO_J.htm">BIOPRO</a></td>
-<td>Blood pressure (systolic, diastolic<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>), Cholesterol, Uric acid, Total Protein, Total Bilirubin, Phosphorus, Sodium, Potassium, Globulin, Total Calcium</td>
+<td>Assess distribution of absolute log bias</td>
+<td>Most <a href="./step5.html">bias multiplier</a> values are close to null (0), only a few values seem to deviate from null.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Comparison with regular propensity score</td>
+<td>Estimates slightly <a href="./ps.html">towards null</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sensitivity-analysis" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="sensitivity-analysis"><span class="header-section-number">19.4</span> Sensitivity analysis</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Information</th>
+<th>Description</th>
+<th>Our example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sensitivity analysis</td>
+<td>Varying the number of selected proxies [k].</td>
+<td>OR estimates stabilizes around 1.5, shows variability below <a href="./sens.html"><code>k</code> = 50 and above 110</a></td>
+</tr>
+<tr class="even">
+<td>Sensitivity analysis</td>
+<td>Varying the prevalence filter [n].</td>
+<td>OR estimates stabilizes around 1.5 for <a href="./sens.html">above <code>n</code> = 60</a>.</td>
 </tr>
 </tbody>
 </table>
 
 
-
-<div class="no-row-height column-margin column-container"><div class="">
-<ul>
-<li>14 demographic, behavioral, health history related variables
-<ul>
-<li>Mostly <strong>categorical</strong></li>
-</ul></li>
-<li>11 lab variables
-<ul>
-<li>Mostly <strong>continuous</strong></li>
-</ul></li>
-</ul>
-</div></div><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-nhanes" class="csl-entry" role="doc-biblioentry">
-Disease Control, Centers for, and Prevention. 2021. <span>“National Health and Nutrition Examination Survey (NHANES).”</span> <em>National Center for Health Statistics</em>.
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-karim2022use" class="csl-entry" role="doc-biblioentry">
+Karim, Mohammad Ehsanul, Fabio Pellegrini, Robert W Platt, Gabrielle Simoneau, Julie Rouette, and Carl de Moor. 2022. <span>“The Use and Quality of Reporting of Propensity Score Methods in Multiple Sclerosis Literature: A Review.”</span> <em>Multiple Sclerosis Journal</em> 28 (9): 1317–23.
 </div>
-<div id="ref-greenland1999causal" class="csl-entry" role="doc-biblioentry">
-Greenland, Sander, Judea Pearl, and James M Robins. 1999. <span>“Causal Diagrams for Epidemiologic Research.”</span> <em>Epidemiology</em>, 37–48.
+<div id="ref-rassen2023high" class="csl-entry" role="doc-biblioentry">
+Rassen, Jeremy A, Patrick Blin, Sebastian Kloss, Romain S Neugebauer, Robert W Platt, Anton Pottegård, Sebastian Schneeweiss, and Sengwee Toh. 2023. <span>“High-Dimensional Propensity Scores for Empirical Covariate Selection in Secondary Database Studies: Planning, Implementation, and Reporting.”</span> <em>Pharmacoepidemiology and Drug Safety</em> 32 (2): 93–106.
+</div>
+<div id="ref-simoneau2022recommendations" class="csl-entry" role="doc-biblioentry">
+Simoneau, Gabrielle, Fabio Pellegrini, Thomas PA Debray, Julie Rouette, Johanna Muñoz, Robert W Platt, John Petkau, et al. 2022. <span>“Recommendations for the Use of Propensity Score Methods in Multiple Sclerosis Research.”</span> <em>Multiple Sclerosis Journal</em> 28 (9): 1467–80.
+</div>
+<div id="ref-tazare2022transparency" class="csl-entry" role="doc-biblioentry">
+Tazare, John, Richard Wyss, Jessica M Franklin, Liam Smeeth, Stephen JW Evans, Shirley V Wang, Sebastian Schneeweiss, Ian J Douglas, Joshua J Gagne, and Elizabeth J Williamson. 2022. <span>“Transparency of High-Dimensional Propensity Score Analyses: Guidance for Diagnostics and Reporting.”</span> <em>Pharmacoepidemiology and Drug Safety</em> 31 (4): 411–23.
 </div>
 </div>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>combination of (a) Doctor told you have diabetes, (b) Taking insulin now, (c) Take diabetic pills to lower blood sugar.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>cigarette use (at least 100 cigarettes in life)<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Sleep hours/workdays<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>How healthy is the diet<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Routine place to go for healthcare<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>average of 4 measurements<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
@@ -760,13 +671,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./motivating.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Motivating example</span>
+      <a href="./guideline.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Guideline</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./proxy.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reducing residual confounding</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
