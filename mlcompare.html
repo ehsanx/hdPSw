@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,25 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
+}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
 }
 </style>
 
@@ -395,17 +414,17 @@ ul.task-list li input[type="checkbox"] {
   </tr>
   <tr>
    <td style="text-align:left;"> Pure LASSO </td>
-   <td style="text-align:right;"> 1.55 </td>
-   <td style="text-align:right;"> 0.44 </td>
+   <td style="text-align:right;"> 1.51 </td>
+   <td style="text-align:right;"> 0.41 </td>
    <td style="text-align:right;"> 0.04 </td>
-   <td style="text-align:right;"> 0.36 </td>
-   <td style="text-align:right;"> 0.51 </td>
+   <td style="text-align:right;"> 0.34 </td>
+   <td style="text-align:right;"> 0.49 </td>
    <td style="text-align:right;"> &lt; 2e-16 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Hybrid (hdPS, then LASSO) </td>
-   <td style="text-align:right;"> 1.54 </td>
-   <td style="text-align:right;"> 0.43 </td>
+   <td style="text-align:right;"> 1.55 </td>
+   <td style="text-align:right;"> 0.44 </td>
    <td style="text-align:right;"> 0.04 </td>
    <td style="text-align:right;"> 0.36 </td>
    <td style="text-align:right;"> 0.51 </td>
@@ -425,18 +444,18 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 1.57 </td>
    <td style="text-align:right;"> 0.45 </td>
    <td style="text-align:right;"> 0.05 </td>
-   <td style="text-align:right;"> 0.35 </td>
-   <td style="text-align:right;"> 0.56 </td>
+   <td style="text-align:right;"> 0.34 </td>
+   <td style="text-align:right;"> 0.55 </td>
    <td style="text-align:right;"> &lt; 2e-16 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> TMLE (only GLM in SL) </td>
-   <td style="text-align:right;"> 1.58 </td>
-   <td style="text-align:right;"> 0.46 </td>
+   <td style="text-align:right;"> 1.55 </td>
+   <td style="text-align:right;"> 0.44 </td>
    <td style="text-align:right;"> 0.06 </td>
-   <td style="text-align:right;"> 0.35 </td>
-   <td style="text-align:right;"> 0.57 </td>
-   <td style="text-align:right;"> 2.5e-16 </td>
+   <td style="text-align:right;"> 0.33 </td>
+   <td style="text-align:right;"> 0.55 </td>
+   <td style="text-align:right;"> 2.7e-15 </td>
   </tr>
 </tbody>
 </table>
@@ -448,6 +467,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>PS is the result from the propensity score approach that did not include any proxies.</li>
 <li>Results from this approach is somewhat different than other approaches.</li>
+<li>More detailed results from simulations are available <a href="https://ehsanx.github.io/hdPS/results2.html">elsewhere</a> <span class="citation" data-cites="hdps23">(<a href="references.html#ref-hdps23" role="doc-biblioref">Karim 2023</a>)</span>.</li>
 </ul>
 </div></div><div class="cell" data-hash="mlcompare_cache/html/unnamed-chunk-3_846e24bfd0ecc3f9ba251cd2b5640a62">
 <div class="cell-output-display">
@@ -462,6 +482,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-hdps23" class="csl-entry" role="doc-biblioentry">
+Karim, ME. 2023. <span>“Rethinking Residual Confounding Bias Reduction: Why Vanilla hdPS Alone Is No Longer Enough.”</span> <a href="https://doi.org/10.5281/zenodo.7877767">https://doi.org/10.5281/zenodo.7877767</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

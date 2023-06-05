@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -467,7 +467,7 @@ div.csl-indent {
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>sel.variables<span class="ot">&lt;-</span><span class="fu">row.names</span>(coef.fit)[<span class="fu">which</span>(<span class="fu">as.numeric</span>(coef.fit)<span class="sc">!=</span><span class="dv">0</span>)]</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>proxy.list.sel.hybrid <span class="ot">&lt;-</span> proxy.list[proxy.list <span class="sc">%in%</span> sel.variables]</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(proxy.list.sel.hybrid)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 49</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 52</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>proxyform <span class="ot">&lt;-</span> <span class="fu">paste0</span>(proxy.list.sel.hybrid, <span class="at">collapse =</span> <span class="st">"+"</span>)</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>rhsformula <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">c</span>(covform, proxyform), <span class="at">collapse =</span> <span class="st">"+"</span>)</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>ps.formula <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">"exposure"</span>, <span class="st">"~"</span>, rhsformula))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -503,7 +503,7 @@ div.csl-indent {
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>fit.summary_with_ci.h <span class="ot">&lt;-</span> <span class="fu">c</span>(fit.summary, fit.ci)</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(fit.summary_with_ci.h,<span class="dv">2</span>) </span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Estimate Std. Error   Pr(&gt;|z|)      2.5 %     97.5 % </span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       0.43       0.04       0.00       0.36       0.51</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       0.44       0.04       0.00       0.36       0.51</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="no-row-height column-margin column-container"><div class="">
